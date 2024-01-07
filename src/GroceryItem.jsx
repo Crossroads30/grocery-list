@@ -5,8 +5,8 @@ import { GiCircle } from 'react-icons/gi'
 import { ImCheckmark } from 'react-icons/im'
 
 function GroceryItem({ id, title, editItem, removeItem }) {
-	const [isMark, setIsMark] = useState(null)
 	const [showMarks, setShowMarks] = useState(false)
+	
 	return (
 		<article className='grocery-item'>
 			<div className='title-container'>
