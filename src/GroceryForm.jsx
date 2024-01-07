@@ -40,7 +40,7 @@ const GroceryForm = ({
 			const newItem = {
 				id: new Date().getTime().toString(),
 				title: name,
-				cost: price,
+				cost: '?',
 			}
 			setList([...list, newItem])
 		}

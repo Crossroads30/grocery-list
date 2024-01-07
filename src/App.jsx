@@ -35,6 +35,10 @@ function App() {
 	}
 
 	const removeItem = id => {
+		setPrice('')
+		setName('')
+		setIsEditPrice(false)
+		setIsEditing(false)
 		const newList = list.filter(item => item.id !== id)
 		showAlert(true, 'продукт удален!', 'danger')
 		// setList(list.filter(item => item.id !== id))
@@ -42,6 +46,8 @@ function App() {
 	}
 
 	const editItem = id => {
+		setPrice('')
+		setIsEditPrice(false)
 		const editingItem = list.find(item => item.id === id)
 		setIsEditing(true)
 		setEditId(id)
