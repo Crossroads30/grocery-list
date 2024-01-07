@@ -1,6 +1,36 @@
+import { useState } from "react"
 import Alert from "./Alert"
 
-const GroceryForm = () => {
+const GroceryForm = ({ isEditing }) => {
+	const [name, setName] = useState('')
+
+	const handleSubmit = e => {
+		e.preventDefault()
+		if (!name) {
+			// show alert
+			showAlert(true, 'пожалуйста добавьте продукт', 'danger')
+		} else if (name && isEditing) {
+			// deal with edit
+			setList(
+				list.map(item => {
+					if (item.id === editId) {
+						return { ...item, title: name }
+					}
+					return item
+				})
+			)
+			setName('')
+			setEditId(null)
+			setIsEditing(false)
+			showAlert(true, 'исправлено!', 'success')
+		} else {
+			showAlert(true, 'продукт добавлен!', 'success')
+			const newItem = { id: new Date().getTime().toString(), title: name }
+			setList([...list, newItem])
+		}
+		setName('')
+	}
+
 	return (
 		<form className='grocery-form' onSubmit={handleSubmit}>
 			{alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
