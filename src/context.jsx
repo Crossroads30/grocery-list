@@ -37,9 +37,9 @@ const AppProvider = ({ children }) => {
       getList()
     }, [])
 
-    // useEffect(() => {
-    //   localStorage.setItem('list', JSON.stringify(state.list)) 
-    // }, [state.list])
+    useEffect(() => {
+      localStorage.setItem('list', JSON.stringify(state.list)) 
+    }, [state.list])
 
 
 	return (
