@@ -1,8 +1,18 @@
 import { FaEdit, FaTrash } from 'react-icons/fa'
+import { CiDollar } from 'react-icons/ci'
+
+
 
 const Buttons = ({ editItem, removeItem, id }) => {
 	return (
 		<div className='btn-container'>
+			<button
+				onClick={() => removeItem(id)}
+				className='amount-btn'
+				type='button'
+			>
+				<CiDollar className='dollar'/>
+			</button>
 			<button onClick={() => editItem(id)} className='edit-btn' type='button'>
 				<FaEdit />
 			</button>

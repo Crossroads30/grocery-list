@@ -114,10 +114,12 @@ Grocery List
 }
 .btn-container {
 	margin-right: 1rem;
+	display: flex;
 }
 .edit-btn,
 .delete-btn,
-.mark-btn {
+.mark-btn,
+.amount-btn {
 	background: transparent;
 	border-color: transparent;
 	cursor: pointer;
@@ -136,6 +138,12 @@ Grocery List
 }
 .delete-btn:hover {
 	color: var(--clr-red-dark);
+}
+.amount-btn {
+font-size: 1.2rem;
+}
+.dollar {
+	margin-top: 3px;
 }
 .clear-btn {
   background: transparent;
