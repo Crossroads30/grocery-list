@@ -161,6 +161,9 @@ display: flex;
 	display: flex;
 	overflow: hidden;
 }
+.title-price-wrapper {
+	margin-left: .3rem;
+}
 .footer {
   margin-top: 4rem;
   text-align: center;
@@ -189,9 +192,9 @@ display: flex;
 }
 .amount {
   text-align: center;
-  margin-bottom: .3rem;
+  margin-bottom: 0rem;
   font-size: 1.25rem;
-  line-height: .2;
+  line-height: 1;
 }
 hr {
   background: var(--clr-grey-5);
