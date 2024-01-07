@@ -15,7 +15,6 @@ const getLocalStorage = () => {
 }
 
 function App() {
-	const [name, setName] = useState('')
 	const [list, setList] = useState(getLocalStorage())
 	const [isEditing, setIsEditing] = useState(false)
 	const [editId, setEditId] = useState(null)
@@ -25,32 +24,7 @@ function App() {
 		type: '',
 	})
 
-	const handleSubmit = e => {
-		e.preventDefault()
-		if (!name) {
-			// show alert
-			showAlert(true, 'пожалуйста добавьте продукт', 'danger')
-		} else if (name && isEditing) {
-			// deal with edit
-			setList(
-				list.map(item => {
-					if (item.id === editId) {
-						return { ...item, title: name }
-					}
-					return item
-				})
-			)
-			setName('')
-			setEditId(null)
-			setIsEditing(false)
-			showAlert(true, 'исправлено!', 'success')
-		} else {
-			showAlert(true, 'продукт добавлен!', 'success')
-			const newItem = { id: new Date().getTime().toString(), title: name }
-			setList([...list, newItem])
-		}
-		setName('')
-	}
+
 
 	const showAlert = (show = false, msg = '', type = '') => {
 		setAlert({ show, msg, type }) //(ES6 feature) if value is equal to param we just can skip this construction: 'show: show, msg: msg, type: type', and pass only one word
@@ -81,8 +55,13 @@ function App() {
 
 	return (
 		<section className='section-center'>
-			<GroceryForm />
-			<Grocery />
+			<GroceryForm isEditing={isEditing} />
+			<Grocery
+				list={list}
+				removeItem={removeItem}
+				editItem={editItem}
+				clearList={clearList}
+			/>
 		</section>
 	)
 }

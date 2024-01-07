@@ -1,6 +1,6 @@
 import GroceryList from './GroceryList'
 
-const Grocery = () => {
+const Grocery = ({ list, removeItem, editItem, clearList }) => {
 	return (
 		<>
 			{list.length > 0 && (
