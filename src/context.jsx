@@ -1,49 +1,66 @@
 import React, { useContext, useEffect, useReducer } from 'react'
-import { TOGGLE_AMOUNT, DISPLAY_ITEMS } from './actions'
+import {
+	TOGGLE_AMOUNT,
+	DISPLAY_ITEMS,
+	ADD_ITEM,
+	SHOW_ITEM_ALERT,
+} from './actions'
 import reducer from './reducer'
 
 const AppContext = React.createContext()
 
-  const getLocalStorage = () => {
-		let list = localStorage.getItem('list')
-		if (list) {
-			return (list = JSON.parse(localStorage.getItem('list')))
-		} else {
-			return []
-		}
+const getLocalStorage = () => {
+	let itemList = localStorage.getItem('itemList')
+	if (itemList) {
+		return (itemList = JSON.parse(localStorage.getItem('itemList')))
+	} else {
+		return []
 	}
+}
 
 const initialState = {
-  list: [],
+	itemList: getLocalStorage(),
 	total: 0,
 	amount: 0,
+	alert: {
+		show: false,
+		msg: '',
+		type: '',
+	},
 }
 
 const AppProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 
-  console.log(state)
+	console.log(state.itemList)
 
-  	const toggleAmount = (id, type) => {
-			dispatch({ type: TOGGLE_AMOUNT, payload: { id, type } })
-		}
+	const toggleAmount = (id, type) => {
+		dispatch({ type: TOGGLE_AMOUNT, payload: { id, type } })
+	}
 
-    const getList = () => {
-      const list = getLocalStorage()
-      dispatch({ type: DISPLAY_ITEMS, payload: list })
-    }
-    
-    useEffect(() => {
-      getList()
-    }, [])
+	const addItem = name => {
+		dispatch({ type: ADD_ITEM, payload: name })
+	}
 
-    useEffect(() => {
-      localStorage.setItem('list', JSON.stringify(state.list)) 
-    }, [state.list])
+	const showItemAlert = () => {
+		dispatch({ type: SHOW_ITEM_ALERT })
+	}
 
+	useEffect(() => {
+		const timeout = setTimeout(() => {
+			showItemAlert()
+		}, 2000)
+		return () => clearTimeout(timeout)
+	}, [state.itemList])
+
+	useEffect(() => {
+		localStorage.setItem('itemList', JSON.stringify(state.itemList))
+	}, [state.itemList])
 
 	return (
-		<AppContext.Provider value={toggleAmount}>{children}</AppContext.Provider>
+		<AppContext.Provider value={{ ...state, toggleAmount, addItem }}>
+			{children}
+		</AppContext.Provider>
 	)
 }
 
