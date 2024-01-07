@@ -106,14 +106,13 @@ Grocery List
 .title {
 	margin-bottom: 0;
 	color: var(--clr-grey-1);
-	letter-spacing: 2px;
+	letter-spacing: 1px;
 	transition: var(--transition);
 }
 .title.complete {
 	text-decoration: line-through;
 }
 .btn-container {
-	margin-right: 1rem;
 	display: flex;
 }
 .edit-btn,
@@ -141,9 +140,7 @@ Grocery List
 }
 .amount-btn {
 font-size: 1.2rem;
-}
-.dollar {
-	margin-top: 3px;
+display: flex;
 }
 .clear-btn {
   background: transparent;
@@ -162,6 +159,7 @@ font-size: 1.2rem;
 }
 .title-container {
 	display: flex;
+	overflow: hidden;
 }
 .footer {
   margin-top: 4rem;
