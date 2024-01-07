@@ -49,8 +49,8 @@ function App() {
 	}
 
 	const editItem = id => {
-		setPrice('')
-		setIsEditPrice(false)
+		// setPrice('')
+		// setIsEditPrice(false)
 		const editingItem = list.find(item => item.id === id)
 		setIsEditing(true)
 		setEditId(id)

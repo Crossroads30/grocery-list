@@ -2,8 +2,8 @@ import { FaEdit, FaTrash } from 'react-icons/fa'
 import { CiDollar } from 'react-icons/ci'
 import { useGlobalContext } from '../../context'
 
-const Buttons = ({ editItem, id, editPrice }) => {
-	const { removeItem } = useGlobalContext()
+const Buttons = ({ id, editPrice }) => {
+	const { removeItem, editItem } = useGlobalContext()
 
 	return (
 		<div className='btn-container'>
