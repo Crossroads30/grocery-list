@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Title from './Title'
 import ControlsBlock from './controls-block/ControlsBlock'
 
-function GroceryItem({ id, title, editItem, removeItem, editPrice, cost }) {
+function GroceryItem({ id, title, editItem, editPrice, cost }) {
 	const [showMarks, setShowMarks] = useState(false)
 
 	return (
@@ -17,7 +17,6 @@ function GroceryItem({ id, title, editItem, removeItem, editPrice, cost }) {
 			<ControlsBlock
 				id={id}
 				editItem={editItem}
-				removeItem={removeItem}
 				editPrice={editPrice}
 			/>
 		</article>

@@ -1,8 +1,8 @@
 import {
-	DISPLAY_ITEMS,
 	TOGGLE_AMOUNT,
 	ADD_ITEM,
 	SHOW_ITEM_ALERT,
+	REMOVE_ITEM,
 } from './actions'
 
 const reducer = (state, action) => {
@@ -26,6 +26,13 @@ const reducer = (state, action) => {
 		return {
 			...state,
 			alert: { show: false, msg: '', type: '' },
+		}
+	}
+	if (action.type === REMOVE_ITEM) {
+		let newList = state.itemList.filter(item => item.id !== action.payload)
+		return {
+			...state,
+			itemList: newList,
 		}
 	}
 	return state

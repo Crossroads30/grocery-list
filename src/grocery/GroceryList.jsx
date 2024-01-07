@@ -1,7 +1,7 @@
 import { useGlobalContext } from '../context'
 import GroceryItem from '../grocery-item/GroceryItem'
 
-const GroceryList = ({ list, removeItem, editItem, editPrice }) => {
+const GroceryList = ({ editItem, editPrice }) => {
 	const { itemList } = useGlobalContext()
 	// console.log(list)
 	return (
@@ -15,7 +15,6 @@ const GroceryList = ({ list, removeItem, editItem, editPrice }) => {
 						id={id}
 						title={title}
 						editItem={editItem}
-						removeItem={removeItem}
 						editPrice={editPrice}
 						cost={cost}
 					/>
