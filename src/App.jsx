@@ -2,21 +2,24 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import GroceryForm from './GroceryForm'
 import Grocery from './grocery/Grocery'
+import { useGlobalContext } from './context'
 
-const getLocalStorage = () => {
-	let list = localStorage.getItem('list')
-	if (list) {
-		return (list = JSON.parse(localStorage.getItem('list')))
-	} else {
-		return []
-	}
-}
+// const getLocalStorage = () => {
+// 	let list = localStorage.getItem('list')
+// 	if (list) {
+// 		return (list = JSON.parse(localStorage.getItem('list')))
+// 	} else {
+// 		return []
+// 	}
+// }
 
 function App() {
-	const [name, setName] = useState('')
+	const {itemList} = useGlobalContext()
+
+	
 	const [price, setPrice] = useState('')
 	const [isEditPrice, setIsEditPrice] = useState(false)
-	const [list, setList] = useState(getLocalStorage())
+	const [list, setList] = useState(itemList)
 	const [isEditing, setIsEditing] = useState(false)
 	const [editId, setEditId] = useState(null)
 	const [alert, setAlert] = useState({
@@ -24,7 +27,7 @@ function App() {
 		msg: '',
 		type: '',
 	})
-
+	
 	const showAlert = (show = false, msg = '', type = '') => {
 		setAlert({ show, msg, type }) //(ES6 feature) if value is equal to param we just can skip this construction: 'show: show, msg: msg, type: type', and pass only one word
 	}
@@ -61,15 +64,15 @@ function App() {
 		setPrice(editingPrice.cost)
 	}
 
-	useEffect(() => {
-		localStorage.setItem('list', JSON.stringify(list))
-	}, [list])
+	// useEffect(() => {
+	// 	localStorage.setItem('list', JSON.stringify(list))
+	// }, [list])
 
 	return (
 		<section className='section-center'>
 			<GroceryForm
-				name={name}
-				setName={setName}
+				// name={name}
+				// setName={setName}
 				price={price}
 				setPrice={setPrice}
 				isEditing={isEditing}
