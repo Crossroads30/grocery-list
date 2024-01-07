@@ -1,15 +1,14 @@
+import { useGlobalContext } from '../context'
 import GroceryItem from '../grocery-item/GroceryItem'
 
-const GroceryList = ({
-	list,
-	removeItem,
-	editItem,
-	editPrice,
-}) => {
+const GroceryList = ({ list, removeItem, editItem, editPrice }) => {
+	const { itemList } = useGlobalContext()
+	// console.log(list)
 	return (
 		<div className='grocery-list'>
-			{list.map(item => {
+			{itemList.map(item => {
 				const { id, title, cost } = item
+				{/* console.log(title) */}
 				return (
 					<GroceryItem
 						key={id}

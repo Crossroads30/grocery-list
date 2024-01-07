@@ -1,4 +1,6 @@
+import { useGlobalContext } from '../context'
 import GroceryList from './GroceryList'
+
 
 const Grocery = ({
 	list,
@@ -8,9 +10,10 @@ const Grocery = ({
 	editPrice,
 	id,
 }) => {
+	const {itemList} = useGlobalContext()
 	return (
 		<>
-			{list.length > 0 && (
+			{itemList.length > 0 && (
 				<div className='grocery-container'>
 					<GroceryList
 						list={list}
