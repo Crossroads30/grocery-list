@@ -55,7 +55,12 @@ function App() {
 
 	return (
 		<section className='section-center'>
-			<GroceryForm isEditing={isEditing} />
+			<GroceryForm
+				isEditing={isEditing}
+				showAlert={showAlert}
+				setList={setList}
+				list={list}
+			/>
 			<Grocery
 				list={list}
 				removeItem={removeItem}

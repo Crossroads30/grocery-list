@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Alert from "./Alert"
 
-const GroceryForm = ({ isEditing }) => {
+const GroceryForm = ({ isEditing, showAlert, setList, list }) => {
 	const [name, setName] = useState('')
 
 	const handleSubmit = e => {

@@ -8,7 +8,7 @@ function GroceryItem({ id, title, editItem, removeItem }) {
 
 	return (
 		<article className='grocery-item'>
-			<Title />
+			<Title showMarks={showMarks} />
 			<ControlsBlock />
 		</article>
 	)

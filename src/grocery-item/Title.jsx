@@ -1,7 +1,7 @@
 import { GiCircle } from 'react-icons/gi'
 import { ImCheckmark } from 'react-icons/im'
 
-const Title = () => {
+const Title = ({ showMarks }) => {
 	return (
 		<div className='title-container'>
 			<button
