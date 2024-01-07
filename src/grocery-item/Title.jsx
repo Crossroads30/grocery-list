@@ -1,7 +1,7 @@
 import { GiCircle } from 'react-icons/gi'
 import { ImCheckmark } from 'react-icons/im'
 
-const Title = ({ showMarks }) => {
+const Title = ({ showMarks, title, setShowMarks }) => {
 	return (
 		<div className='title-container'>
 			<button
@@ -17,7 +17,7 @@ const Title = ({ showMarks }) => {
 					<GiCircle />
 				)}
 			</button>
-			<p className={showMarks ? 'title complete' : 'title'}>title</p>
+			<p className={showMarks ? 'title complete' : 'title'}>{title}</p>
 		</div>
 	)
 }

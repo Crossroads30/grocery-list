@@ -1,9 +1,17 @@
-import { useState } from "react"
-import Alert from "./Alert"
+import Alert from './Alert'
 
-const GroceryForm = ({ isEditing, showAlert, setList, list }) => {
-	const [name, setName] = useState('')
-
+const GroceryForm = ({
+	isEditing,
+	showAlert,
+	setList,
+	list,
+	name,
+	setName,
+	setIsEditing,
+	editId,
+	setEditId,
+	alert,
+}) => {
 	const handleSubmit = e => {
 		e.preventDefault()
 		if (!name) {

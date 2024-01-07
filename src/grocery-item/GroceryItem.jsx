@@ -8,8 +8,8 @@ function GroceryItem({ id, title, editItem, removeItem }) {
 
 	return (
 		<article className='grocery-item'>
-			<Title showMarks={showMarks} />
-			<ControlsBlock />
+			<Title showMarks={showMarks} title={title} setShowMarks={setShowMarks} />
+			<ControlsBlock id={id} editItem={editItem} removeItem={removeItem} />
 		</article>
 	)
 }

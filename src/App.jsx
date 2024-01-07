@@ -15,6 +15,7 @@ const getLocalStorage = () => {
 }
 
 function App() {
+	const [name, setName] = useState('')
 	const [list, setList] = useState(getLocalStorage())
 	const [isEditing, setIsEditing] = useState(false)
 	const [editId, setEditId] = useState(null)
@@ -23,8 +24,6 @@ function App() {
 		msg: '',
 		type: '',
 	})
-
-
 
 	const showAlert = (show = false, msg = '', type = '') => {
 		setAlert({ show, msg, type }) //(ES6 feature) if value is equal to param we just can skip this construction: 'show: show, msg: msg, type: type', and pass only one word
@@ -56,10 +55,16 @@ function App() {
 	return (
 		<section className='section-center'>
 			<GroceryForm
+				name={name}
+				setName={setName}
 				isEditing={isEditing}
+				setIsEditing={setIsEditing}
 				showAlert={showAlert}
+				alert={alert}
 				setList={setList}
 				list={list}
+				editId={editId}
+				setEditId={setEditId}
 			/>
 			<Grocery
 				list={list}

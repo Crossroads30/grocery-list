@@ -1,6 +1,6 @@
 import { FaEdit, FaTrash } from 'react-icons/fa'
 
-const Buttons = () => {
+const Buttons = ({ editItem, removeItem, id }) => {
 	return (
 		<div className='btn-container'>
 			<button onClick={() => editItem(id)} className='edit-btn' type='button'>

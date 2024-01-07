@@ -1,10 +1,10 @@
 import Amount from "./Amount"
 import Buttons from "./Buttons"
 
-const ControlsBlock = () => {
-  return (
+const ControlsBlock = ({ removeItem, editItem, id }) => {
+	return (
 		<div className='btn-amount-wrapper'>
-			<Buttons />
+			<Buttons id={id} removeItem={removeItem} editItem={editItem} />
 			<Amount />
 		</div>
 	)
