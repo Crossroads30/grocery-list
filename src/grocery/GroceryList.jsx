@@ -1,6 +1,11 @@
 import GroceryItem from '../grocery-item/GroceryItem'
 
-const GroceryList = ({ list, removeItem, editItem }) => {
+const GroceryList = ({
+	list,
+	removeItem,
+	editItem,
+	editPrice,
+}) => {
 	return (
 		<div className='grocery-list'>
 			{list.map(item => {
@@ -12,6 +17,7 @@ const GroceryList = ({ list, removeItem, editItem }) => {
 						title={title}
 						editItem={editItem}
 						removeItem={removeItem}
+						editPrice={editPrice}
 					/>
 				)
 			})}

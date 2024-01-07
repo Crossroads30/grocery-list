@@ -1,6 +1,13 @@
 import GroceryList from './GroceryList'
 
-const Grocery = ({ list, removeItem, editItem, clearList, id }) => {
+const Grocery = ({
+	list,
+	removeItem,
+	editItem,
+	clearList,
+	editPrice,
+	id,
+}) => {
 	return (
 		<>
 			{list.length > 0 && (
@@ -9,6 +16,7 @@ const Grocery = ({ list, removeItem, editItem, clearList, id }) => {
 						list={list}
 						removeItem={removeItem}
 						editItem={editItem}
+						editPrice={editPrice}
 						id={id}
 					/>
 					<button onClick={clearList} type='button' className='clear-btn'>

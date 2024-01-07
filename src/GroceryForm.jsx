@@ -11,6 +11,8 @@ const GroceryForm = ({
 	editId,
 	setEditId,
 	alert,
+	isEditPrice,
+	setPrice,
 }) => {
 	const handleSubmit = e => {
 		e.preventDefault()
@@ -49,7 +51,13 @@ const GroceryForm = ({
 					type='text'
 					className='grocery'
 					value={name}
-					onChange={e => setName(e.target.value)}
+					onChange={
+						isEditing
+							? e => setPrice(e.target.value)
+							: isEditPrice
+							? e => setPrice(e.target.value)
+							: null
+					}
 				/>
 				<button className='submit-btn' type='submit'>
 					{isEditing ? 'исправить' : 'добавить'}

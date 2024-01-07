@@ -3,11 +3,16 @@ import { CiDollar } from 'react-icons/ci'
 
 
 
-const Buttons = ({ editItem, removeItem, id }) => {
+const Buttons = ({
+	editItem,
+	removeItem,
+	id,
+	editPrice,
+}) => {
 	return (
 		<div className='btn-container'>
 			<button
-				onClick={() => removeItem(id)}
+				onClick={() => editPrice(id)}
 				className='amount-btn'
 				type='button'
 			>
