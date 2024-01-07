@@ -2,21 +2,23 @@ import Alert from './Alert'
 
 const GroceryForm = ({
 	isEditing,
+	setIsEditing,
 	showAlert,
-	setList,
 	list,
+	setList,
 	name,
 	setName,
-	setIsEditing,
 	editId,
 	setEditId,
-	alert,
 	isEditPrice,
+	setIsEditPrice,
+	price,
 	setPrice,
+	alert,
 }) => {
 	const handleSubmit = e => {
 		e.preventDefault()
-		if (!name) {
+		if (!name && !price) {
 			// show alert
 			showAlert(true, 'пожалуйста добавьте продукт', 'danger')
 		} else if (name && isEditing) {
@@ -35,10 +37,33 @@ const GroceryForm = ({
 			showAlert(true, 'исправлено!', 'success')
 		} else {
 			showAlert(true, 'продукт добавлен!', 'success')
-			const newItem = { id: new Date().getTime().toString(), title: name }
+			const newItem = {
+				id: new Date().getTime().toString(),
+				title: name,
+				cost: price,
+			}
 			setList([...list, newItem])
 		}
 		setName('')
+
+		if (!price && isEditPrice ) {
+			// show alert
+			showAlert(true, 'пожалуйста добавьте цену', 'danger')
+		} else if (price && isEditPrice) {
+			// deal with editPrice
+			setList(
+				list.map(item => {
+					if (item.id === editId) {
+						return { ...item, cost: price }
+					}
+					return item
+				})
+			)
+			setPrice('')
+			setEditId(null)
+			setIsEditPrice(false)
+			showAlert(true, 'цена добавлена!', 'success')
+		}
 	}
 
 	return (
@@ -46,19 +71,24 @@ const GroceryForm = ({
 			{alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
 			<h3>список продуктов</h3>
 			<div className='form-control'>
-				<input
-					placeholder='Добавьте продукты'
-					type='text'
-					className='grocery'
-					value={name}
-					onChange={
-						isEditing
-							? e => setPrice(e.target.value)
-							: isEditPrice
-							? e => setPrice(e.target.value)
-							: null
-					}
-				/>
+				{isEditPrice ? (
+					<input
+						placeholder='Добавьте цену'
+						type='text'
+						className='grocery'
+						value={price}
+						onChange={e => setPrice(e.target.value)}
+					/>
+				) : (
+					<input
+						placeholder='Добавьте продукты'
+						type='text'
+						className='grocery'
+						value={name}
+						onChange={e => setName(e.target.value)}
+					/>
+				)}
+
 				<button className='submit-btn' type='submit'>
 					{isEditing ? 'исправить' : 'добавить'}
 				</button>

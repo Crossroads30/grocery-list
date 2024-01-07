@@ -9,7 +9,7 @@ const GroceryList = ({
 	return (
 		<div className='grocery-list'>
 			{list.map(item => {
-				const { id, title } = item
+				const { id, title, cost } = item
 				return (
 					<GroceryItem
 						key={id}
@@ -18,6 +18,7 @@ const GroceryList = ({
 						editItem={editItem}
 						removeItem={removeItem}
 						editPrice={editPrice}
+						cost={cost}
 					/>
 				)
 			})}

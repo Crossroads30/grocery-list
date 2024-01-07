@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Alert from './Alert'
-import GroceryList from './grocery/GroceryList'
 import './App.css'
 import GroceryForm from './GroceryForm'
 import Grocery from './grocery/Grocery'
@@ -16,7 +14,7 @@ const getLocalStorage = () => {
 
 function App() {
 	const [name, setName] = useState('')
-	const [price, setPrice] = useState(null)
+	const [price, setPrice] = useState('')
 	const [isEditPrice, setIsEditPrice] = useState(false)
 	const [list, setList] = useState(getLocalStorage())
 	const [isEditing, setIsEditing] = useState(false)
@@ -52,8 +50,9 @@ function App() {
 
 	const editPrice = id => {
 		const editingPrice = list.find(item => item.id === id)
-		console.log('Price edited!')
 		setIsEditPrice(true)
+		setEditId(id)
+		setPrice(editingPrice.cost)
 	}
 
 	useEffect(() => {
@@ -65,16 +64,18 @@ function App() {
 			<GroceryForm
 				name={name}
 				setName={setName}
+				price={price}
+				setPrice={setPrice}
 				isEditing={isEditing}
 				setIsEditing={setIsEditing}
-				showAlert={showAlert}
-				alert={alert}
-				setList={setList}
-				list={list}
+				isEditPrice={isEditPrice}
+				setIsEditPrice={setIsEditPrice}
 				editId={editId}
 				setEditId={setEditId}
-				setPrice={setPrice}
-				isEditPrice={isEditPrice}
+				list={list}
+				setList={setList}
+				alert={alert}
+				showAlert={showAlert}
 			/>
 			<Grocery
 				list={list}

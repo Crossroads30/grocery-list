@@ -1,7 +1,7 @@
 import { GiCircle } from 'react-icons/gi'
 import { ImCheckmark } from 'react-icons/im'
 
-const Title = ({ showMarks, title, setShowMarks, price }) => {
+const Title = ({ showMarks, title, setShowMarks, cost }) => {
 	return (
 		<div className='title-container'>
 			<button
@@ -19,7 +19,7 @@ const Title = ({ showMarks, title, setShowMarks, price }) => {
 			</button>
 			<div className='title-price-wrapper'>
 				<p className={showMarks ? 'title complete' : 'title'}>{title}</p>
-				<p className='title'>цена:{price}</p>
+				<p className='title'>цена: {cost}</p>
 			</div>
 		</div>
 	)
