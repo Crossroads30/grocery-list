@@ -89,7 +89,7 @@ Grocery List
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-bottom: 0.5rem;
+	margin-bottom: 0rem;
 	transition: var(--transition);
 	padding: 0.25rem 1rem;
 	border-radius: var(--radius);
@@ -111,6 +111,9 @@ Grocery List
 }
 .title.complete {
 	text-decoration: line-through;
+}
+.btn-container {
+	margin-right: 1rem;
 }
 .edit-btn,
 .delete-btn,
@@ -161,6 +164,33 @@ Grocery List
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
+}
+.btn-amount-wrapper {
+	display: flex;
+	align-items: center;
+}
+.amount-btn {
+  width: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.amount-btn svg {
+  fill: var(--clr-primary);
+}
+.amount-btn:hover svg {
+  fill: var(--clr-primary-light);
+}
+.amount {
+  text-align: center;
+  margin-bottom: .3rem;
+  font-size: 1.25rem;
+  line-height: .2;
+}
+hr {
+  background: var(--clr-grey-5);
+  border-color: transparent;
+  border-width: 0.25px;
 }
 
 @media screen and (max-width: 470px) {

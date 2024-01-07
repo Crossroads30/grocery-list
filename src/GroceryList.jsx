@@ -19,7 +19,7 @@ const GroceryList = ({ list, removeItem, editItem }) => {
 				<hr />
 				<div className='cart-total'>
 					<h4>
-						total <span>$200</span>
+						сумма <span>20р.</span>
 					</h4>
 				</div>
 				
