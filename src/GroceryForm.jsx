@@ -1,21 +1,26 @@
+import { useState } from 'react'
 import Alert from './Alert'
+import { useGlobalContext } from './context'
 
 const GroceryForm = ({
 	isEditing,
 	setIsEditing,
-	showAlert,
+	// showAlert,
 	list,
 	setList,
-	name,
-	setName,
+	// name,
+	// setName,
 	editId,
 	setEditId,
 	isEditPrice,
 	setIsEditPrice,
 	price,
 	setPrice,
-	alert,
+	// alert,
 }) => {
+	const {itemList, addItem, alert } = useGlobalContext()
+	const [name, setName] = useState('')
+
 	const handleSubmit = e => {
 		e.preventDefault()
 		if (!name && !price) {
@@ -24,7 +29,7 @@ const GroceryForm = ({
 		} else if (name && isEditing) {
 			// deal with edit
 			setList(
-				list.map(item => {
+				itemList.map(item => {
 					if (item.id === editId) {
 						return { ...item, title: name }
 					}
@@ -36,13 +41,14 @@ const GroceryForm = ({
 			setIsEditing(false)
 			showAlert(true, 'исправлено!', 'success')
 		} else {
-			showAlert(true, 'продукт добавлен!', 'success')
-			const newItem = {
-				id: new Date().getTime().toString(),
-				title: name,
-				cost: '?',
-			}
-			setList([...list, newItem])
+			// showAlert(true, 'продукт добавлен!', 'success')
+			// const newItem = {
+			// 	id: new Date().getTime().toString(),
+			// 	title: name,
+			// 	cost: '?',
+			// }
+			// setList([...list, newItem])
+			addItem(name)
 		}
 		setName('')
 
@@ -68,7 +74,9 @@ const GroceryForm = ({
 
 	return (
 		<form className='grocery-form' onSubmit={handleSubmit}>
-			{alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
+			{alert.show && (
+				<Alert {...alert} />
+			)}
 			<h3>список продуктов</h3>
 			<div className='form-control'>
 				{isEditPrice ? (
