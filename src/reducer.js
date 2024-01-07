@@ -1,4 +1,9 @@
-import { DISPLAY_ITEMS, TOGGLE_AMOUNT, ADD_ITEM, SHOW_ALERT } from './actions'
+import {
+	DISPLAY_ITEMS,
+	TOGGLE_AMOUNT,
+	ADD_ITEM,
+	SHOW_ITEM_ALERT,
+} from './actions'
 
 const reducer = (state, action) => {
 	if (action.type === ADD_ITEM) {
@@ -17,7 +22,7 @@ const reducer = (state, action) => {
 			},
 		}
 	}
-	if (action.type === SHOW_ALERT) {
+	if (action.type === SHOW_ITEM_ALERT) {
 		return {
 			...state,
 			alert: { show: false, msg: '', type: '' },
