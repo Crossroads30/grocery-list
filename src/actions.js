@@ -1,2 +1,4 @@
 export const TOGGLE_AMOUNT = 'TOGGLE_AMOUNT'
 export const DISPLAY_ITEMS = 'DISPLAY_ITEMS'
+export const ADD_ITEM = 'ADD_ITEM'
+export const SHOW_ITEM_ALERT = 'SHOW_ITEM_ALERT'
