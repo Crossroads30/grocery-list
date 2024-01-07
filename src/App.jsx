@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Alert from './Alert'
-import GroceryList from './GroceryList'
+import GroceryList from './grocery/GroceryList'
 import './App.css'
+import GroceryForm from './GroceryForm'
+import Grocery from './grocery/Grocery'
 
 const getLocalStorage = () => {
 	let list = localStorage.getItem('list')
@@ -79,34 +81,8 @@ function App() {
 
 	return (
 		<section className='section-center'>
-			<form className='grocery-form' onSubmit={handleSubmit}>
-				{alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
-				<h3>список продуктов</h3>
-				<div className='form-control'>
-					<input
-						placeholder='Добавьте продукты'
-						type='text'
-						className='grocery'
-						value={name}
-						onChange={e => setName(e.target.value)}
-					/>
-					<button className='submit-btn' type='submit'>
-						{isEditing ? 'исправить' : 'добавить'}
-					</button>
-				</div>
-			</form>
-			{list.length > 0 && (
-				<div className='grocery-container'>
-					<GroceryList
-						list={list}
-						removeItem={removeItem}
-						editItem={editItem}
-					/>
-					<button onClick={clearList} type='button' className='clear-btn'>
-						очистить список
-					</button>
-				</div>
-			)}
+			<GroceryForm />
+			<Grocery />
 		</section>
 	)
 }

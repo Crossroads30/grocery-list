@@ -1,4 +1,4 @@
-import GroceryItem from './GroceryItem'
+import GroceryItem from '../grocery-item/GroceryItem'
 
 const GroceryList = ({ list, removeItem, editItem }) => {
 	return (
@@ -22,7 +22,6 @@ const GroceryList = ({ list, removeItem, editItem }) => {
 						сумма <span>20р.</span>
 					</h4>
 				</div>
-				
 			</footer>
 		</div>
 	)
