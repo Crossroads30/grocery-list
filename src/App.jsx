@@ -16,6 +16,8 @@ const getLocalStorage = () => {
 
 function App() {
 	const [name, setName] = useState('')
+	const [price, setPrice] = useState(null)
+	const [isEditPrice, setIsEditPrice] = useState(false)
 	const [list, setList] = useState(getLocalStorage())
 	const [isEditing, setIsEditing] = useState(false)
 	const [editId, setEditId] = useState(null)
@@ -48,6 +50,12 @@ function App() {
 		setName(editingItem.title)
 	}
 
+	const editPrice = id => {
+		const editingPrice = list.find(item => item.id === id)
+		console.log('Price edited!')
+		setIsEditPrice(true)
+	}
+
 	useEffect(() => {
 		localStorage.setItem('list', JSON.stringify(list))
 	}, [list])
@@ -65,12 +73,15 @@ function App() {
 				list={list}
 				editId={editId}
 				setEditId={setEditId}
+				setPrice={setPrice}
+				isEditPrice={isEditPrice}
 			/>
 			<Grocery
 				list={list}
 				removeItem={removeItem}
 				editItem={editItem}
 				clearList={clearList}
+				editPrice={editPrice}
 			/>
 		</section>
 	)
