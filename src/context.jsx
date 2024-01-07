@@ -5,6 +5,7 @@ import {
 	ADD_ITEM,
 	SHOW_ITEM_ALERT,
 	REMOVE_ITEM,
+	REMOVE_LIST,
 } from './actions'
 import reducer from './reducer'
 
@@ -33,6 +34,10 @@ const initialState = {
 const AppProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 	// console.log(state.itemList)
+
+	const removeList = () => {
+		dispatch({ type: REMOVE_LIST })
+	}
 
 	const removeItem = id => {
 		dispatch({ type: REMOVE_ITEM, payload: id })
@@ -63,7 +68,7 @@ const AppProvider = ({ children }) => {
 
 	return (
 		<AppContext.Provider
-			value={{ ...state, toggleAmount, addItem, removeItem }}
+			value={{ ...state, toggleAmount, addItem, removeItem, removeList }}
 		>
 			{children}
 		</AppContext.Provider>

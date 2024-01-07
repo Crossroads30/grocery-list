@@ -3,6 +3,7 @@ import {
 	ADD_ITEM,
 	SHOW_ITEM_ALERT,
 	REMOVE_ITEM,
+	REMOVE_LIST,
 } from './actions'
 
 const reducer = (state, action) => {
@@ -26,6 +27,12 @@ const reducer = (state, action) => {
 		return {
 			...state,
 			alert: { show: false, msg: '', type: '' },
+		}
+	}
+	if (action.type === REMOVE_LIST) {
+		return {
+			...state,
+			itemList: [],
 		}
 	}
 	if (action.type === REMOVE_ITEM) {

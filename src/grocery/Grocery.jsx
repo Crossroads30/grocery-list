@@ -3,26 +3,21 @@ import GroceryList from './GroceryList'
 
 
 const Grocery = ({
-	list,
-	removeItem,
 	editItem,
-	clearList,
 	editPrice,
 	id,
 }) => {
-	const {itemList} = useGlobalContext()
+	const { itemList, removeList } = useGlobalContext()
 	return (
 		<>
 			{itemList.length > 0 && (
 				<div className='grocery-container'>
 					<GroceryList
-						list={list}
-						removeItem={removeItem}
 						editItem={editItem}
 						editPrice={editPrice}
 						id={id}
 					/>
-					<button onClick={clearList} type='button' className='clear-btn'>
+					<button onClick={removeList} type='button' className='clear-btn'>
 						очистить список
 					</button>
 				</div>
