@@ -1,12 +1,7 @@
 import React, { useEffect } from 'react'
+import { useGlobalContext } from './context'
 
-const Alert = ({ msg, type, removeAlert, list }) => {
-	useEffect(() => {
-		const timeout = setTimeout(() => {
-			removeAlert()
-		}, 2000)
-		return () => clearTimeout(timeout)
-	}, [list])
+const Alert = ({ msg, type }) => {
 	return <p className={`alert alert-${type}`}>{msg}</p>
 }
 
