@@ -77,18 +77,6 @@ function App() {
 		localStorage.setItem('list', JSON.stringify(list))
 	}, [list])
 
-	// useEffect(() => {
-	// 	localStorage.setItem('list', JSON.stringify([
-	// 	{id: 1, title: 'батон'},
-	// 	{id: 2, title: 'пол-хлеба'},
-	// 	{id: 3, title: 'сметана'},
-	// 	{id: 4, title: 'молоко'},
-	// 	{id: 5, title: 'яйца'},
-	// 	{id: 6, title: 'масло'},
-	// 	{id: 7, title: 'вода'},
-	// ]))
-	// }, [])
-
 	return (
 		<section className='section-center'>
 			<form className='grocery-form' onSubmit={handleSubmit}>
