@@ -11,7 +11,7 @@ const Buttons = ({ editItem, removeItem, id }) => {
 				className='amount-btn'
 				type='button'
 			>
-				<CiDollar className='dollar'/>
+				<CiDollar />
 			</button>
 			<button onClick={() => editItem(id)} className='edit-btn' type='button'>
 				<FaEdit />
