@@ -26,9 +26,11 @@ const getLocalStorage = () => {
 const initialState = {
 	itemList: getLocalStorage(),
 	itemName: '',
+	itemPrice: 0,
 	total: 0,
 	amount: 0,
-	isEditing: false,
+	isNameEditing: false,
+	isPriceEditing: false,
 	editId: null,
 	alert: {
 		show: false,
