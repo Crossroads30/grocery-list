@@ -12,6 +12,7 @@ import {
 } from './actions'
 
 const reducer = (state, action) => {
+
 	if (action.type === ADD_ITEM) {
 		const newItem = {
 			id: new Date().getTime().toString(),
@@ -29,18 +30,21 @@ const reducer = (state, action) => {
 			itemName: '',
 		}
 	}
+
 	if (action.type === SHOW_ITEM_ALERT) {
 		return {
 			...state,
 			alert: { show: false, msg: '', type: '' },
 		}
 	}
+
 	if (action.type === REMOVE_LIST) {
 		return {
 			...state,
 			itemList: [],
 		}
 	}
+
 	if (action.type === REMOVE_ITEM) {
 		let newList = state.itemList.filter(item => item.id !== action.payload)
 		return {
@@ -48,37 +52,45 @@ const reducer = (state, action) => {
 			itemList: newList,
 		}
 	}
+
 	if (action.type === EDIT_ITEM) {
 		let itemOnEdit = state.itemList.find(item => item.id === action.payload)
 		return {
 			...state,
+			isPriceEditing: false,
 			isNameEditing: true,
 			editId: itemOnEdit.id,
 			itemName: itemOnEdit.title,
 		}
 	}
+
 	if (action.type === EDIT_PRICE) {
 		let itemOnEdit = state.itemList.find(item => item.id === action.payload)
 		console.log(itemOnEdit)
 		return {
 			...state,
+			isNameEditing: false,
 			isPriceEditing: true,
 			editId: itemOnEdit.id,
 			itemPrice: itemOnEdit.cost,
+			itemName: '',
 		}
 	}
+
 	if (action.type === GET_NAME) {
 		return {
 			...state,
 			itemName: action.payload,
 		}
 	}
+
 	if (action.type === GET_PRICE) {
 		return {
 			...state,
 			itemPrice: action.payload,
 		}
 	}
+
 	if (action.type === EDIT_ITEM_LIST) {
 		if (state.isNameEditing) {
 			return {
