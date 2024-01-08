@@ -6,6 +6,7 @@ import {
 	REMOVE_LIST,
 	EDIT_ITEM,
 	GET_NAME,
+	EDIT_ITEM_LIST,
 } from './actions'
 
 const reducer = (state, action) => {
@@ -23,6 +24,7 @@ const reducer = (state, action) => {
 				msg: 'продукт добавлен!',
 				type: 'success',
 			},
+			itemName: '',
 		}
 	}
 	if (action.type === SHOW_ITEM_ALERT) {
@@ -58,6 +60,19 @@ const reducer = (state, action) => {
 		return {
 			...state,
 			itemName: action.payload,
+		}
+	}
+	if (action.type === EDIT_ITEM_LIST) {
+		return {
+			...state,
+			itemList: action.payload,
+			alert: {
+				show: true,
+				msg: 'исправлено!',
+				type: 'success',
+			},
+			itemName: '',
+			isEditing: false,
 		}
 	}
 	return state

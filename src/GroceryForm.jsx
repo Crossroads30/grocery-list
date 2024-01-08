@@ -6,8 +6,8 @@ const GroceryForm = ({
 	// isEditing,
 	// setIsEditing,
 	// showAlert,
-	list,
-	setList,
+	// list,
+	// setList,
 	// name,
 	// setName,
 	// editId,
@@ -18,8 +18,16 @@ const GroceryForm = ({
 	setPrice,
 	// alert,
 }) => {
-	const { itemList, addItem, alert, isEditing, editId, itemName, getName } =
-		useGlobalContext()
+	const {
+		itemList,
+		addItem,
+		alert,
+		isEditing,
+		editId,
+		itemName,
+		getName,
+		editItemList,
+	} = useGlobalContext()
 	// const [name, setName] = useState('')
 
 	const handleSubmit = e => {
@@ -31,12 +39,13 @@ const GroceryForm = ({
 			// deal with edit
 			// setName(itemName)
 			// setList(
-			itemList.map(item => {
+			const editedList = itemList.map(item => {
 				if (item.id === editId) {
-					return { ...item, title: name }
+					return { ...item, title: itemName }
 				}
 				return item
 			})
+			editItemList(editedList)
 			// )
 			// setEditId(null)
 			// setIsEditing(false)
