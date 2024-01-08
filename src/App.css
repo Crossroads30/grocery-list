@@ -11,6 +11,9 @@ Grocery List
 	transition: var(--transition);
 	padding: 2rem;
 	margin-top: 8rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 .section-center:hover {
 	box-shadow: var(--dark-shadow);

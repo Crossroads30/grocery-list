@@ -7,9 +7,11 @@ import Grocery from './grocery/Grocery'
 function App() {
 	return (
 		<section className='section-center'>
-			<Header />
-			<GroceryForm />
-			<Grocery />
+			<div>
+				<Header />
+				<GroceryForm />
+				<Grocery />
+			</div>
 			<Footer />
 		</section>
 	)
