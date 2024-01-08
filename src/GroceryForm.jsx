@@ -1,13 +1,9 @@
-import Alert from './Alert'
 import { useGlobalContext } from './context'
-import cartImage from './assets/shoppingcart.png'
-import Header from './Header'
 
 const GroceryForm = ({}) => {
 	const {
 		itemList,
 		addItem,
-		alert,
 		isNameEditing,
 		editId,
 		itemName,
@@ -17,7 +13,6 @@ const GroceryForm = ({}) => {
 		itemPrice,
 		isPriceEditing,
 		showDangerAlert,
-		amount,
 	} = useGlobalContext()
 
 	const timeout = () => {
@@ -82,7 +77,6 @@ const GroceryForm = ({}) => {
 						onChange={e => getName(e.target.value)}
 					/>
 				)}
-
 				<button className='submit-btn' type='submit'>
 					{isNameEditing ? 'исправить' : 'добавить'}
 				</button>
