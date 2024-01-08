@@ -54,6 +54,11 @@ const reducer = (state, action) => {
 	if (action.type === REMOVE_LIST) {
 		return {
 			...state,
+			alert: {
+				show: true,
+				msg: 'список очищен!',
+				type: 'danger',
+			},
 			itemList: [],
 		}
 	}
@@ -62,6 +67,11 @@ const reducer = (state, action) => {
 		let newList = state.itemList.filter(item => item.id !== action.payload)
 		return {
 			...state,
+			alert: {
+				show: true,
+				msg: 'продукт удален!',
+				type: 'danger',
+			},
 			itemList: newList,
 		}
 	}
