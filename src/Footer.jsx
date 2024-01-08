@@ -16,9 +16,6 @@ const Footer = () => {
 					<Button click={removeList} type='button' classname='clear-btn'>
 						очистить список
 					</Button>
-					{/* <button onClick={removeList} type='button' className='clear-btn'>
-          очистить список
-        </button> */}
 				</footer>
 			)}
 		</>
