@@ -1,19 +1,27 @@
-import { useGlobalContext } from "./context"
+import Button from './Button'
+import { useGlobalContext } from './context'
 
 const Footer = () => {
-  const { total, removeList } = useGlobalContext()
-  return (
-		<footer className='footer'>
-			<hr />
-			<div className='cart-total'>
-				<h4>
-					сумма <span>{total}р.</span>
-				</h4>
-			</div>
-			<button onClick={removeList} type='button' className='clear-btn'>
-				очистить список
-			</button>
-		</footer>
+	const { total, removeList, itemList } = useGlobalContext()
+	return (
+		<>
+			{itemList.length > 0 && (
+				<footer className='footer'>
+					<hr />
+					<div className='cart-total'>
+						<h4>
+							сумма <span>{total}р.</span>
+						</h4>
+					</div>
+					<Button click={removeList} type='button' classname='clear-btn'>
+						очистить список
+					</Button>
+					{/* <button onClick={removeList} type='button' className='clear-btn'>
+          очистить список
+        </button> */}
+				</footer>
+			)}
+		</>
 	)
 }
 export default Footer
