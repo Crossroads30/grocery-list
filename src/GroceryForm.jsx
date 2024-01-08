@@ -2,22 +2,7 @@ import { useState } from 'react'
 import Alert from './Alert'
 import { useGlobalContext } from './context'
 
-const GroceryForm = ({
-	// isEditing,
-	// setIsEditing,
-	// showAlert,
-	// list,
-	// setList,
-	// name,
-	// setName,
-	// editId,
-	// setEditId,
-	// isEditPrice,
-	// setIsEditPrice,
-	// price,
-	// setPrice,
-	// alert,
-}) => {
+const GroceryForm = ({}) => {
 	const {
 		itemList,
 		addItem,
@@ -32,7 +17,6 @@ const GroceryForm = ({
 		isPriceEditing,
 		showDangerAlert,
 	} = useGlobalContext()
-	// const [name, setName] = useState('')
 
 	const timeout = () => {
 		setTimeout(() => {
@@ -48,9 +32,7 @@ const GroceryForm = ({
 			timeout()
 			clearTimeout(timeout())
 		} else if (itemName && isNameEditing) {
-			// deal with edit
-			// setName(itemName)
-			// setList(
+			// deal with editName
 			const editedList = itemList.map(item => {
 				if (item.id === editId) {
 					return { ...item, title: itemName }
@@ -58,22 +40,9 @@ const GroceryForm = ({
 				return item
 			})
 			editItemList(editedList)
-			// )
-			// setEditId(null)
-			// setIsEditing(false)
-			// showAlert(true, 'исправлено!', 'success')
 		} else {
-			// showAlert(true, 'продукт добавлен!', 'success')
-			// const newItem = {
-			// 	id: new Date().getTime().toString(),
-			// 	title: name,
-			// 	cost: '?',
-			// }
-			// setList([...list, newItem])
 			addItem(itemName)
 		}
-		// setName('')
-
 		if (!itemPrice && isPriceEditing) {
 			// show alert
 			showDangerAlert(true, 'пожалуйста добавьте цену!', 'danger')
@@ -81,7 +50,6 @@ const GroceryForm = ({
 			clearTimeout(timeout())
 		} else if (itemPrice && isPriceEditing) {
 			// deal with editPrice
-			// setList(
 			const editedList = itemList.map(item => {
 				if (item.id === editId) {
 					return { ...item, cost: itemPrice }
@@ -89,11 +57,6 @@ const GroceryForm = ({
 				return item
 			})
 			editItemList(editedList)
-			// )
-			// setPrice('')
-			// setEditId(null)
-			// setIsEditPrice(false)
-			// showAlert(true, 'цена добавлена!', 'success')
 		}
 	}
 

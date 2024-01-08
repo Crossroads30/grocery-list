@@ -1,10 +1,10 @@
-import Amount from "./Amount"
-import Buttons from "./Buttons"
+import Amount from './Amount'
+import Buttons from './Buttons'
 
-const ControlsBlock = ({ editItem, id, editPrice, amount }) => {
+const ControlsBlock = ({ id, amount }) => {
 	return (
 		<div className='btn-amount-wrapper'>
-			<Buttons id={id} editItem={editItem} editPrice={editPrice} />
+			<Buttons id={id} />
 			<Amount id={id} amount={amount} />
 		</div>
 	)
