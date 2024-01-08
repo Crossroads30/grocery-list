@@ -5,10 +5,10 @@ import {
 	REMOVE_ITEM,
 	REMOVE_LIST,
 	EDIT_ITEM,
+	GET_NAME,
 } from './actions'
 
 const reducer = (state, action) => {
-
 	if (action.type === ADD_ITEM) {
 		const newItem = {
 			id: new Date().getTime().toString(),
@@ -47,13 +47,17 @@ const reducer = (state, action) => {
 	if (action.type === EDIT_ITEM) {
 		let itemOnEdit = state.itemList.find(item => item.id === action.payload)
 		console.log(itemOnEdit)
-		const editedItem = {
-			...itemOnEdit,
-			title: 'payload.name'
-		} 
 		return {
 			...state,
-			itemList: [...state.itemList, editedItem],
+			isEditing: true,
+			editId: itemOnEdit.id,
+			itemName: itemOnEdit.title,
+		}
+	}
+	if (action.type === GET_NAME) {
+		return {
+			...state,
+			itemName: action.payload,
 		}
 	}
 	return state

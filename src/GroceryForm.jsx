@@ -3,43 +3,44 @@ import Alert from './Alert'
 import { useGlobalContext } from './context'
 
 const GroceryForm = ({
-	isEditing,
-	setIsEditing,
+	// isEditing,
+	// setIsEditing,
 	// showAlert,
 	list,
 	setList,
 	// name,
 	// setName,
-	editId,
-	setEditId,
+	// editId,
+	// setEditId,
 	isEditPrice,
 	setIsEditPrice,
 	price,
 	setPrice,
 	// alert,
 }) => {
-	const {itemList, addItem, alert } = useGlobalContext()
-	const [name, setName] = useState('')
+	const { itemList, addItem, alert, isEditing, editId, itemName, getName } =
+		useGlobalContext()
+	// const [name, setName] = useState('')
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		if (!name && !price) {
+		if (!itemName && !price) {
 			// show alert
-			showAlert(true, 'пожалуйста добавьте продукт', 'danger')
-		} else if (name && isEditing) {
+			// showAlert(true, 'пожалуйста добавьте продукт', 'danger')
+		} else if (itemName && isEditing) {
 			// deal with edit
-			setList(
-				itemList.map(item => {
-					if (item.id === editId) {
-						return { ...item, title: name }
-					}
-					return item
-				})
-			)
-			setName('')
-			setEditId(null)
-			setIsEditing(false)
-			showAlert(true, 'исправлено!', 'success')
+			// setName(itemName)
+			// setList(
+			itemList.map(item => {
+				if (item.id === editId) {
+					return { ...item, title: name }
+				}
+				return item
+			})
+			// )
+			// setEditId(null)
+			// setIsEditing(false)
+			// showAlert(true, 'исправлено!', 'success')
 		} else {
 			// showAlert(true, 'продукт добавлен!', 'success')
 			// const newItem = {
@@ -48,25 +49,25 @@ const GroceryForm = ({
 			// 	cost: '?',
 			// }
 			// setList([...list, newItem])
-			addItem(name)
+			addItem(itemName)
 		}
-		setName('')
+		// setName('')
 
-		if (!price && isEditPrice ) {
+		if (!price && isEditPrice) {
 			// show alert
 			showAlert(true, 'пожалуйста добавьте цену', 'danger')
 		} else if (price && isEditPrice) {
 			// deal with editPrice
-			setList(
-				list.map(item => {
-					if (item.id === editId) {
-						return { ...item, cost: price }
-					}
-					return item
-				})
-			)
-			setPrice('')
-			setEditId(null)
+			// setList(
+			const newItemList = list.map(item => {
+				if (item.id === editId) {
+					return { ...item, cost: price }
+				}
+				return item
+			})
+			// )
+			// setPrice('')
+			// setEditId(null)
 			setIsEditPrice(false)
 			showAlert(true, 'цена добавлена!', 'success')
 		}
@@ -74,9 +75,7 @@ const GroceryForm = ({
 
 	return (
 		<form className='grocery-form' onSubmit={handleSubmit}>
-			{alert.show && (
-				<Alert {...alert} />
-			)}
+			{alert.show && <Alert {...alert} />}
 			<h3>список продуктов</h3>
 			<div className='form-control'>
 				{isEditPrice ? (
@@ -92,8 +91,8 @@ const GroceryForm = ({
 						placeholder='Добавьте продукты'
 						type='text'
 						className='grocery'
-						value={name}
-						onChange={e => setName(e.target.value)}
+						value={itemName}
+						onChange={e => getName(e.target.value)}
 					/>
 				)}
 

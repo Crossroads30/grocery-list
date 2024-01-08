@@ -7,6 +7,7 @@ import {
 	REMOVE_ITEM,
 	REMOVE_LIST,
 	EDIT_ITEM,
+	GET_NAME,
 } from './actions'
 import reducer from './reducer'
 
@@ -23,6 +24,7 @@ const getLocalStorage = () => {
 
 const initialState = {
 	itemList: getLocalStorage(),
+	itemName: '',
 	total: 0,
 	amount: 0,
 	isEditing: false,
@@ -36,7 +38,7 @@ const initialState = {
 
 const AppProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState)
-	// console.log(state.itemList)
+	console.log(state)
 
 	const editItem = (id) => {
 		dispatch({type: EDIT_ITEM, payload: id })
@@ -56,6 +58,10 @@ const AppProvider = ({ children }) => {
 
 	const addItem = name => {
 		dispatch({ type: ADD_ITEM, payload: name })
+	}
+
+	const getName = (e) => {
+		dispatch({ type: GET_NAME, payload: e })
 	}
 
 	const showItemAlert = () => {
@@ -82,6 +88,7 @@ const AppProvider = ({ children }) => {
 				removeItem,
 				removeList,
 				editItem,
+				getName,
 			}}
 		>
 			{children}

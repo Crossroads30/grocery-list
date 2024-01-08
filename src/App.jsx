@@ -19,7 +19,7 @@ function App() {
 	
 	const [price, setPrice] = useState('')
 	const [isEditPrice, setIsEditPrice] = useState(false)
-	const [list, setList] = useState(itemList)
+	// const [list, setList] = useState(itemList)
 	const [isEditing, setIsEditing] = useState(false)
 	const [editId, setEditId] = useState(null)
 	const [alert, setAlert] = useState({
@@ -81,13 +81,13 @@ function App() {
 				setIsEditPrice={setIsEditPrice}
 				editId={editId}
 				setEditId={setEditId}
-				list={list}
-				setList={setList}
+				// list={list}
+				// setList={setList}
 				alert={alert}
 				showAlert={showAlert}
 			/>
 			<Grocery
-				list={list}
+				// list={list}
 				removeItem={removeItem}
 				editItem={editItem}
 				clearList={clearList}

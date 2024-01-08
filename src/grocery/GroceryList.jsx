@@ -6,12 +6,12 @@ const GroceryList = ({ editItem, editPrice }) => {
 	// console.log(list)
 	return (
 		<div className='grocery-list'>
-			{itemList.map(item => {
+			{itemList.map((item, index) => {
 				const { id, title, cost } = item
 				{/* console.log(title) */}
 				return (
 					<GroceryItem
-						key={id}
+						key={index}
 						id={id}
 						title={title}
 						editItem={editItem}
