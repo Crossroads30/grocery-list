@@ -1,3 +1,4 @@
+import Footer from '../Footer'
 import { useGlobalContext } from '../context'
 import GroceryItem from '../grocery-item/GroceryItem'
 
@@ -18,14 +19,15 @@ const GroceryList = () => {
 					/>
 				)
 			})}
-			<footer className='footer'>
+			{/* <Footer /> */}
+			{/* <footer className='footer'>
 				<hr />
 				<div className='cart-total'>
 					<h4>
 						сумма <span>{total}р.</span>
 					</h4>
 				</div>
-			</footer>
+			</footer> */}
 		</div>
 	)
 }

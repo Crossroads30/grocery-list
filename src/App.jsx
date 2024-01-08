@@ -1,4 +1,5 @@
 import './App.css'
+import Footer from './Footer'
 import GroceryForm from './GroceryForm'
 import Grocery from './grocery/Grocery'
 
@@ -7,6 +8,7 @@ function App() {
 		<section className='section-center'>
 			<GroceryForm />
 			<Grocery />
+			<Footer />
 		</section>
 	)
 }
