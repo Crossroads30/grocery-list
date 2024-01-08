@@ -2,13 +2,15 @@ import { useGlobalContext } from '../context'
 import GroceryItem from '../grocery-item/GroceryItem'
 
 const GroceryList = ({ editItem, editPrice }) => {
-	const { itemList } = useGlobalContext()
+	const { itemList, total } = useGlobalContext()
 	// console.log(list)
 	return (
 		<div className='grocery-list'>
 			{itemList.map((item, index) => {
 				const { id, title, cost, amount } = item
-				{/* console.log(title) */}
+				{
+					/* console.log(title) */
+				}
 				return (
 					<GroceryItem
 						key={index}
@@ -25,7 +27,7 @@ const GroceryList = ({ editItem, editPrice }) => {
 				<hr />
 				<div className='cart-total'>
 					<h4>
-						сумма <span>20р.</span>
+						сумма <span>{total}р.</span>
 					</h4>
 				</div>
 			</footer>

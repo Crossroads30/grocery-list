@@ -10,6 +10,7 @@ import {
 	GET_PRICE,
 	EDIT_PRICE,
 	SHOW_DANGER_ALERT,
+	GET_TOTAL,
 } from './actions'
 
 const reducer = (state, action) => {
@@ -17,7 +18,7 @@ const reducer = (state, action) => {
 		const newItem = {
 			id: new Date().getTime().toString(),
 			title: action.payload,
-			cost: '?',
+			cost: 0,
 			amount: 1,
 		}
 		return {
@@ -155,6 +156,31 @@ const reducer = (state, action) => {
 			itemList: tempList,
 		}
 	}
+
+		if (action.type === GET_TOTAL) {
+			let { total, amount } = state.itemList.reduce(
+				(listTotal, listItem) => {
+					const { cost, amount } = listItem
+					// console.log(cost, amount)
+					const itemTotalPrice = cost * amount // if we increase count of item we multiply their price by number of items
+
+					listTotal.total += itemTotalPrice
+					listTotal.amount += amount
+					// console.log(listTotal)
+					return listTotal
+				},
+				{
+					total: 0,
+					amount: 0,
+				}
+			)
+			total = parseFloat(total.toFixed(2)) // fix numbers after dot
+			return {
+				...state,
+				total,
+				amount,
+			}
+		}
 	return state
 }
 

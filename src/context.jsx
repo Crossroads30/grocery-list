@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useReducer } from 'react'
 import {
 	TOGGLE_AMOUNT,
-	DISPLAY_ITEMS,
 	ADD_ITEM,
 	SHOW_ITEM_ALERT,
 	REMOVE_ITEM,
@@ -12,6 +11,7 @@ import {
 	GET_PRICE,
 	EDIT_PRICE,
 	SHOW_DANGER_ALERT,
+	GET_TOTAL,
 } from './actions'
 import reducer from './reducer'
 
@@ -96,6 +96,10 @@ const AppProvider = ({ children }) => {
 	useEffect(() => {
 		localStorage.setItem('itemList', JSON.stringify(state.itemList))
 	}, [state.itemList])
+
+		useEffect(() => {
+			dispatch({ type: GET_TOTAL })
+		}, [state.itemList])
 
 	return (
 		<AppContext.Provider
