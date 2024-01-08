@@ -34,10 +34,33 @@ Grocery List
 	color: #155724;
 	background: #d4edda;
 }
-.grocery-form h3 {
-	color: var(--clr-primary-1);
-	margin-bottom: 1.5rem;
+.imageBlock {
+	position: relative;
+	display: flex;
+	margin-bottom: 2rem;
+	align-items: center;
+	justify-content: space-between;
+}
+.imageBlock span {
+	position: absolute;
+	right: 0;
+	top: 23px;
+	width: 35px;
+	height: 35px;
+	border: 3px solid #088f9e;
+	border-radius: 100%;
 	text-align: center;
+	background-color: var(--clr-primary-8);
+	line-height: 1.4;
+	font-size: 20px;
+}
+.cartImage {
+	display: block;
+	margin-left: auto;
+	width: 55px;
+}
+.grocery-title {
+	color: var(--clr-primary-1);
 }
 .form-control {
 	display: flex;

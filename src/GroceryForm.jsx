@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import Alert from './Alert'
 import { useGlobalContext } from './context'
+import cartImage from './assets/shoppingcart.png'
 
 const GroceryForm = ({}) => {
 	const {
@@ -16,6 +16,7 @@ const GroceryForm = ({}) => {
 		itemPrice,
 		isPriceEditing,
 		showDangerAlert,
+		amount,
 	} = useGlobalContext()
 
 	const timeout = () => {
@@ -63,7 +64,11 @@ const GroceryForm = ({}) => {
 	return (
 		<form className='grocery-form' onSubmit={handleSubmit}>
 			{alert.show && <Alert {...alert} />}
+			<div className='imageBlock'>
 			<h3>список продуктов</h3>
+			<img className='cartImage' src={cartImage} alt='cartImage' />
+				<span>{amount}</span>
+			</div>
 			<div className='form-control'>
 				{isPriceEditing ? (
 					<input
