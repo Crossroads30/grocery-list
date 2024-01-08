@@ -7,6 +7,8 @@ import {
 	EDIT_ITEM,
 	GET_NAME,
 	EDIT_ITEM_LIST,
+	GET_PRICE,
+	EDIT_PRICE,
 } from './actions'
 
 const reducer = (state, action) => {
@@ -48,12 +50,21 @@ const reducer = (state, action) => {
 	}
 	if (action.type === EDIT_ITEM) {
 		let itemOnEdit = state.itemList.find(item => item.id === action.payload)
-		console.log(itemOnEdit)
 		return {
 			...state,
 			isNameEditing: true,
 			editId: itemOnEdit.id,
 			itemName: itemOnEdit.title,
+		}
+	}
+	if (action.type === EDIT_PRICE) {
+		let itemOnEdit = state.itemList.find(item => item.id === action.payload)
+		console.log(itemOnEdit)
+		return {
+			...state,
+			isPriceEditing: true,
+			editId: itemOnEdit.id,
+			itemPrice: itemOnEdit.cost,
 		}
 	}
 	if (action.type === GET_NAME) {
@@ -62,17 +73,40 @@ const reducer = (state, action) => {
 			itemName: action.payload,
 		}
 	}
-	if (action.type === EDIT_ITEM_LIST) {
+	if (action.type === GET_PRICE) {
 		return {
 			...state,
-			itemList: action.payload,
-			alert: {
-				show: true,
-				msg: 'исправлено!',
-				type: 'success',
-			},
-			itemName: '',
-			isNameEditing: false,
+			itemPrice: action.payload,
+		}
+	}
+	if (action.type === EDIT_ITEM_LIST) {
+		if (state.isNameEditing) {
+			return {
+				...state,
+				itemList: action.payload,
+
+				alert: {
+					show: true,
+					msg: 'исправлено!',
+					type: 'success',
+				},
+				itemName: '',
+				isNameEditing: false,
+			}
+		}
+		if (state.isPriceEditing) {
+			return {
+				...state,
+				itemList: action.payload,
+
+				alert: {
+					show: true,
+					msg: 'цена добавлена!',
+					type: 'success',
+				},
+				itemPrice: '',
+				isPriceEditing: false,
+			}
 		}
 	}
 	return state

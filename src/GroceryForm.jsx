@@ -27,6 +27,9 @@ const GroceryForm = ({
 		itemName,
 		getName,
 		editItemList,
+		getPrice,
+		itemPrice,
+		isPriceEditing,
 	} = useGlobalContext()
 	// const [name, setName] = useState('')
 
@@ -62,23 +65,24 @@ const GroceryForm = ({
 		}
 		// setName('')
 
-		if (!price && isEditPrice) {
+		if (!itemPrice && isPriceEditing) {
 			// show alert
 			showAlert(true, 'пожалуйста добавьте цену', 'danger')
-		} else if (price && isEditPrice) {
+		} else if (itemPrice && isPriceEditing) {
 			// deal with editPrice
 			// setList(
-			const newItemList = list.map(item => {
+			const editedList = itemList.map(item => {
 				if (item.id === editId) {
-					return { ...item, cost: price }
+					return { ...item, cost: itemPrice }
 				}
 				return item
 			})
+			editItemList(editedList)
 			// )
 			// setPrice('')
 			// setEditId(null)
-			setIsEditPrice(false)
-			showAlert(true, 'цена добавлена!', 'success')
+			// setIsEditPrice(false)
+			// showAlert(true, 'цена добавлена!', 'success')
 		}
 	}
 
@@ -87,13 +91,13 @@ const GroceryForm = ({
 			{alert.show && <Alert {...alert} />}
 			<h3>список продуктов</h3>
 			<div className='form-control'>
-				{isEditPrice ? (
+				{isPriceEditing ? (
 					<input
 						placeholder='Добавьте цену'
 						type='text'
 						className='grocery'
-						value={price}
-						onChange={e => setPrice(e.target.value)}
+						value={itemPrice}
+						onChange={e => getPrice(e.target.value)}
 					/>
 				) : (
 					<input

@@ -8,7 +8,9 @@ import {
 	REMOVE_LIST,
 	EDIT_ITEM,
 	GET_NAME,
-	EDIT_ITEM_LIST
+	EDIT_ITEM_LIST,
+	GET_PRICE,
+	EDIT_PRICE,
 } from './actions'
 import reducer from './reducer'
 
@@ -47,6 +49,10 @@ const AppProvider = ({ children }) => {
 		dispatch({ type: EDIT_ITEM, payload: id })
 	}
 
+	const editPrice = id => {
+		dispatch({ type: EDIT_PRICE, payload: id })
+	}
+
 	const removeList = () => {
 		dispatch({ type: REMOVE_LIST })
 	}
@@ -65,6 +71,10 @@ const AppProvider = ({ children }) => {
 
 	const getName = e => {
 		dispatch({ type: GET_NAME, payload: e })
+	}
+
+	const getPrice = e => {
+		dispatch({ type: GET_PRICE, payload: e })
 	}
 
 	const editItemList = list => {
@@ -97,6 +107,8 @@ const AppProvider = ({ children }) => {
 				editItem,
 				getName,
 				editItemList,
+				getPrice,
+				editPrice,
 			}}
 		>
 			{children}
