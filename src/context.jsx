@@ -8,6 +8,7 @@ import {
 	REMOVE_LIST,
 	EDIT_ITEM,
 	GET_NAME,
+	EDIT_ITEM_LIST
 } from './actions'
 import reducer from './reducer'
 
@@ -40,8 +41,8 @@ const AppProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 	console.log(state)
 
-	const editItem = (id) => {
-		dispatch({type: EDIT_ITEM, payload: id })
+	const editItem = id => {
+		dispatch({ type: EDIT_ITEM, payload: id })
 	}
 
 	const removeList = () => {
@@ -60,8 +61,12 @@ const AppProvider = ({ children }) => {
 		dispatch({ type: ADD_ITEM, payload: name })
 	}
 
-	const getName = (e) => {
+	const getName = e => {
 		dispatch({ type: GET_NAME, payload: e })
+	}
+
+	const editItemList = list => {
+		dispatch({ type: EDIT_ITEM_LIST, payload: list })
 	}
 
 	const showItemAlert = () => {
@@ -89,6 +94,7 @@ const AppProvider = ({ children }) => {
 				removeList,
 				editItem,
 				getName,
+				editItemList,
 			}}
 		>
 			{children}
