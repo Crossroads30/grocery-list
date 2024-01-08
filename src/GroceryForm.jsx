@@ -1,6 +1,7 @@
 import Alert from './Alert'
 import { useGlobalContext } from './context'
 import cartImage from './assets/shoppingcart.png'
+import Header from './Header'
 
 const GroceryForm = ({}) => {
 	const {
@@ -63,19 +64,6 @@ const GroceryForm = ({}) => {
 
 	return (
 		<form className='grocery-form' onSubmit={handleSubmit}>
-			{alert.show && <Alert {...alert} />}
-			<div className='imageBlock'>
-				{itemList.length === 0 ? (
-					<>
-						<h3 className='grocery-title'>список продуктов</h3>
-						<h4 className='empty-cart'>пуст</h4>
-					</>
-				) : (
-					<h3 className='grocery-title'>список продуктов</h3>
-				)}
-				<img className='cartImage' src={cartImage} alt='cartImage' />
-				<span>{amount}</span>
-			</div>
 			<div className='form-control'>
 				{isPriceEditing ? (
 					<input
