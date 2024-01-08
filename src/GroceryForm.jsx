@@ -22,7 +22,7 @@ const GroceryForm = ({
 		itemList,
 		addItem,
 		alert,
-		isEditing,
+		isNameEditing,
 		editId,
 		itemName,
 		getName,
@@ -35,7 +35,7 @@ const GroceryForm = ({
 		if (!itemName && !price) {
 			// show alert
 			// showAlert(true, 'пожалуйста добавьте продукт', 'danger')
-		} else if (itemName && isEditing) {
+		} else if (itemName && isNameEditing) {
 			// deal with edit
 			// setName(itemName)
 			// setList(
@@ -106,7 +106,7 @@ const GroceryForm = ({
 				)}
 
 				<button className='submit-btn' type='submit'>
-					{isEditing ? 'исправить' : 'добавить'}
+					{isNameEditing ? 'исправить' : 'добавить'}
 				</button>
 			</div>
 		</form>
