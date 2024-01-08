@@ -51,7 +51,7 @@ const reducer = (state, action) => {
 		console.log(itemOnEdit)
 		return {
 			...state,
-			isEditing: true,
+			isNameEditing: true,
 			editId: itemOnEdit.id,
 			itemName: itemOnEdit.title,
 		}
@@ -72,7 +72,7 @@ const reducer = (state, action) => {
 				type: 'success',
 			},
 			itemName: '',
-			isEditing: false,
+			isNameEditing: false,
 		}
 	}
 	return state
