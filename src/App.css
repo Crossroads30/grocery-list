@@ -10,7 +10,7 @@ Grocery List
 	box-shadow: var(--light-shadow);
 	transition: var(--transition);
 	padding: 2rem;
-	
+	margin-top: 8rem;
 }
 .section-center:hover {
 	box-shadow: var(--dark-shadow);
@@ -49,19 +49,27 @@ Grocery List
 	height: 35px;
 	border: 3px solid #088f9e;
 	border-radius: 100%;
-	text-align: center;
 	background-color: var(--clr-primary-8);
-	line-height: 1.4;
 	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .cartImage {
 	display: block;
-	margin-left: auto;
 	width: 55px;
 }
 .grocery-title {
 	color: var(--clr-primary-1);
 }
+
+.empty-cart {
+	color: var(--clr-primary-1);
+	font-size: 25px;
+	text-transform: lowercase;
+	color: #f8d7da;
+}
+
 .form-control {
 	display: flex;
 	justify-content: center;
@@ -162,70 +170,70 @@ Grocery List
 	color: var(--clr-red-dark);
 }
 .amount-btn {
-font-size: 1.2rem;
-display: flex;
+	font-size: 1.2rem;
+	display: flex;
 }
 .clear-btn {
-  background: transparent;
-  padding: 0.5rem 1rem;
-  color: var(--clr-red-dark);
-  border: 1px solid var(--clr-red-dark);
-  margin-top: 2.25rem;
-  border-radius: var(--radius);
+	background: transparent;
+	padding: 0.5rem 1rem;
+	color: var(--clr-red-dark);
+	border: 1px solid var(--clr-red-dark);
+	margin-top: 2.25rem;
+	border-radius: var(--radius);
 	max-width: 150px;
 	align-self: center;
 }
 .clear-btn:hover {
-  background: var(--clr-red-light);
-  color: var(--clr-red-dark);
-  border-color: var(--clr-red-light);
+	background: var(--clr-red-light);
+	color: var(--clr-red-dark);
+	border-color: var(--clr-red-light);
 }
 .title-container {
 	display: flex;
 	overflow: hidden;
 }
 .title-price-wrapper {
-	margin-left: .3rem;
+	margin-left: 0.3rem;
 }
 .footer {
-  margin-top: 4rem;
-  text-align: center;
+	margin-top: 4rem;
+	text-align: center;
 }
 .cart-total h4 {
-  text-transform: capitalize;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
+	text-transform: capitalize;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 1rem;
 }
 .btn-amount-wrapper {
 	display: flex;
 	align-items: center;
 }
 .amount-btn {
-  width: 1.5rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
+	width: 1.5rem;
+	background: transparent;
+	border: none;
+	cursor: pointer;
 }
 .amount-btn svg {
-  fill: var(--clr-primary);
+	fill: var(--clr-primary);
 }
 .amount-btn:hover svg {
-  fill: var(--clr-primary-light);
+	fill: var(--clr-primary-light);
 }
 .amount {
-  text-align: center;
-  margin-bottom: 0rem;
-  font-size: 1.25rem;
-  line-height: 1;
+	text-align: center;
+	margin-bottom: 0rem;
+	font-size: 1.25rem;
+	line-height: 1;
 }
 hr {
-  background: var(--clr-grey-5);
-  border-color: transparent;
-  border-width: 0.25px;
+	background: var(--clr-grey-5);
+	border-color: transparent;
+	border-width: 0.25px;
 }
 
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 670px) {
 	h1 {
 		font-size: 2rem;
 	}
@@ -238,20 +246,9 @@ hr {
 	h4 {
 		font-size: 0.5rem;
 	}
-	.section-center {
-		margin-top: 5rem;
-		width: 95vw;
-	}
 }
 
 @media screen and (max-width: 470px) {
-	.section-center {
-		margin-top: 0rem;
-		width: 100vw;
-		height: 100%;
-		min-height: 100vh;
-		border: 8px solid var(--clr-primary-8);
-	}
 	p {
 		font-size: 0.9rem;
 	}
@@ -260,5 +257,11 @@ hr {
 	}
 	.grocery {
 		font-size: 0.9rem;
+	}
+	.grocery-title {
+		font-size: 1.4rem;
+	}
+	.empty-cart {
+		font-size: 1.3rem;
 	}
 }

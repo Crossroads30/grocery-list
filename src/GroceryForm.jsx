@@ -65,8 +65,15 @@ const GroceryForm = ({}) => {
 		<form className='grocery-form' onSubmit={handleSubmit}>
 			{alert.show && <Alert {...alert} />}
 			<div className='imageBlock'>
-			<h3>список продуктов</h3>
-			<img className='cartImage' src={cartImage} alt='cartImage' />
+				{itemList.length === 0 ? (
+					<>
+						<h3 className='grocery-title'>список продуктов</h3>
+						<h4 className='empty-cart'>пуст</h4>
+					</>
+				) : (
+					<h3 className='grocery-title'>список продуктов</h3>
+				)}
+				<img className='cartImage' src={cartImage} alt='cartImage' />
 				<span>{amount}</span>
 			</div>
 			<div className='form-control'>
