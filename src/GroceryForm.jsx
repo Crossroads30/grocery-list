@@ -30,14 +30,24 @@ const GroceryForm = ({
 		getPrice,
 		itemPrice,
 		isPriceEditing,
+		showItemAlert,
+		showDangerAlert,
 	} = useGlobalContext()
 	// const [name, setName] = useState('')
+
+	const timeout = () => {
+		setTimeout(() => {
+			showDangerAlert(false, '', '')
+		}, 2000)
+	}
 
 	const handleSubmit = e => {
 		e.preventDefault()
 		if (!itemName && !price) {
 			// show alert
-			// showAlert(true, 'пожалуйста добавьте продукт', 'danger')
+			showDangerAlert(true, 'пожалуйста добавьте продукт', 'danger')
+			timeout()
+			clearTimeout(timeout())
 		} else if (itemName && isNameEditing) {
 			// deal with edit
 			// setName(itemName)
@@ -67,7 +77,9 @@ const GroceryForm = ({
 
 		if (!itemPrice && isPriceEditing) {
 			// show alert
-			showAlert(true, 'пожалуйста добавьте цену', 'danger')
+			showDangerAlert(true, 'пожалуйста добавьте цену!', 'danger')
+			timeout()
+			clearTimeout(timeout())
 		} else if (itemPrice && isPriceEditing) {
 			// deal with editPrice
 			// setList(

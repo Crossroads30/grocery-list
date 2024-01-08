@@ -9,10 +9,10 @@ import {
 	EDIT_ITEM_LIST,
 	GET_PRICE,
 	EDIT_PRICE,
+	SHOW_DANGER_ALERT,
 } from './actions'
 
 const reducer = (state, action) => {
-
 	if (action.type === ADD_ITEM) {
 		const newItem = {
 			id: new Date().getTime().toString(),
@@ -35,6 +35,17 @@ const reducer = (state, action) => {
 		return {
 			...state,
 			alert: { show: false, msg: '', type: '' },
+		}
+	}
+
+	if (action.type === SHOW_DANGER_ALERT) {
+		return {
+			...state,
+			alert: {
+				show: action.payload.show,
+				msg: action.payload.msg,
+				type: action.payload.type,
+			},
 		}
 	}
 
@@ -96,7 +107,6 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				itemList: action.payload,
-
 				alert: {
 					show: true,
 					msg: 'исправлено!',
@@ -110,7 +120,6 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				itemList: action.payload,
-
 				alert: {
 					show: true,
 					msg: 'цена добавлена!',

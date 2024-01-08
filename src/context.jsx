@@ -11,6 +11,7 @@ import {
 	EDIT_ITEM_LIST,
 	GET_PRICE,
 	EDIT_PRICE,
+	SHOW_DANGER_ALERT,
 } from './actions'
 import reducer from './reducer'
 
@@ -81,13 +82,13 @@ const AppProvider = ({ children }) => {
 		dispatch({ type: EDIT_ITEM_LIST, payload: list })
 	}
 
-	const showItemAlert = () => {
-		dispatch({ type: SHOW_ITEM_ALERT })
+	const showDangerAlert = (show, msg, type) => {
+		dispatch({ type: SHOW_DANGER_ALERT, payload: { show, msg, type } })
 	}
 
 	useEffect(() => {
 		const timeout = setTimeout(() => {
-			showItemAlert()
+			dispatch({ type: SHOW_ITEM_ALERT })
 		}, 2000)
 		return () => clearTimeout(timeout)
 	}, [state.itemList])
@@ -109,6 +110,7 @@ const AppProvider = ({ children }) => {
 				editItemList,
 				getPrice,
 				editPrice,
+				showDangerAlert,
 			}}
 		>
 			{children}
