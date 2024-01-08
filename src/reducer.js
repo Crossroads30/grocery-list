@@ -144,53 +144,51 @@ const reducer = (state, action) => {
 	}
 
 	if (action.type === TOGGLE_AMOUNT) {
-		
-		let tempList = state.itemList
-			.map(listItem => {
-				if (listItem.id === action.payload.id) {
-					if (action.payload.type === 'increase') {
-						return { ...listItem, amount: listItem.amount + 1 }
-					}
-					if (action.payload.type === 'decrease') {
-						if (listItem.amount > 1) {
-							return { ...listItem, amount: listItem.amount - 1 }
-						}
-						return { ...listItem }
-					}
+		let tempList = state.itemList.map(listItem => {
+			if (listItem.id === action.payload.id) {
+				if (action.payload.type === 'increase') {
+					return { ...listItem, amount: listItem.amount + 1 }
 				}
-				return listItem
-			})
-			// .filter(listItem => listItem.amount !== 0)
+				if (action.payload.type === 'decrease') {
+					if (listItem.amount > 1) {
+						return { ...listItem, amount: listItem.amount - 1 }
+					}
+					return { ...listItem }
+				}
+			}
+			return listItem
+		})
+		// .filter(listItem => listItem.amount !== 0)
 		return {
 			...state,
 			itemList: tempList,
 		}
 	}
 
-		if (action.type === GET_TOTAL) {
-			let { total, amount } = state.itemList.reduce(
-				(listTotal, listItem) => {
-					const { cost, amount } = listItem
-					// console.log(cost, amount)
-					const itemTotalPrice = cost * amount // if we increase count of item we multiply their price by number of items
+	if (action.type === GET_TOTAL) {
+		let { total, amount } = state.itemList.reduce(
+			(listTotal, listItem) => {
+				const { cost, amount } = listItem
+				// console.log(cost, amount)
+				const itemTotalPrice = cost * amount // if we increase count of item we multiply their price by number of items
 
-					listTotal.total += itemTotalPrice
-					listTotal.amount += amount
-					// console.log(listTotal)
-					return listTotal
-				},
-				{
-					total: 0,
-					amount: 0,
-				}
-			)
-			total = parseFloat(total.toFixed(2)) // fix numbers after dot
-			return {
-				...state,
-				total,
-				amount,
+				listTotal.total += itemTotalPrice
+				listTotal.amount += amount
+				// console.log(listTotal)
+				return listTotal
+			},
+			{
+				total: 0,
+				amount: 0,
 			}
+		)
+		total = parseFloat(total.toFixed(2)) // fix numbers after dot
+		return {
+			...state,
+			total,
+			amount,
 		}
+	}
 	return state
 }
 
