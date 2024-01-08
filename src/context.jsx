@@ -44,7 +44,7 @@ const initialState = {
 
 const AppProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState)
-	console.log(state)
+	// console.log(state)
 
 	const editItem = id => {
 		dispatch({ type: EDIT_ITEM, payload: id })

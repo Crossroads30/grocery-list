@@ -14,8 +14,6 @@ import { useGlobalContext } from './context'
 // }
 
 function App() {
-	const {itemList} = useGlobalContext()
-
 	
 	// const [price, setPrice] = useState('')
 	// const [isEditPrice, setIsEditPrice] = useState(false)

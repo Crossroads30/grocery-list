@@ -1,5 +1,9 @@
-const Amount = () => {
-  return (
+import { useGlobalContext } from "../../context"
+
+const Amount = ({ id, amount }) => {
+	const { toggleAmount } = useGlobalContext()
+
+	return (
 		<div className='amount-wrapper'>
 			{/* increase amount */}
 			{/* as second parameter, we pass the type */}
@@ -12,7 +16,7 @@ const Amount = () => {
 				</svg>
 			</button>
 			{/* amount */}
-			<p className='amount'>1</p>
+			<p className='amount'>{amount}</p>
 			{/* decrease amount */}
 			{/* as second parameter, we pass the type */}
 			<button

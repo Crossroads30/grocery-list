@@ -7,7 +7,7 @@ const GroceryList = ({ editItem, editPrice }) => {
 	return (
 		<div className='grocery-list'>
 			{itemList.map((item, index) => {
-				const { id, title, cost } = item
+				const { id, title, cost, amount } = item
 				{/* console.log(title) */}
 				return (
 					<GroceryItem
@@ -17,6 +17,7 @@ const GroceryList = ({ editItem, editPrice }) => {
 						editItem={editItem}
 						editPrice={editPrice}
 						cost={cost}
+						amount={amount}
 					/>
 				)
 			})}

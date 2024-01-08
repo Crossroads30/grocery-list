@@ -18,6 +18,7 @@ const reducer = (state, action) => {
 			id: new Date().getTime().toString(),
 			title: action.payload,
 			cost: '?',
+			amount: 1,
 		}
 		return {
 			...state,
@@ -77,7 +78,7 @@ const reducer = (state, action) => {
 
 	if (action.type === EDIT_PRICE) {
 		let itemOnEdit = state.itemList.find(item => item.id === action.payload)
-		console.log(itemOnEdit)
+		// console.log(itemOnEdit)
 		return {
 			...state,
 			isNameEditing: false,
@@ -128,6 +129,30 @@ const reducer = (state, action) => {
 				itemPrice: '',
 				isPriceEditing: false,
 			}
+		}
+	}
+
+	if (action.type === TOGGLE_AMOUNT) {
+		
+		let tempList = state.itemList
+			.map(listItem => {
+				if (listItem.id === action.payload.id) {
+					if (action.payload.type === 'increase') {
+						return { ...listItem, amount: listItem.amount + 1 }
+					}
+					if (action.payload.type === 'decrease') {
+						if (listItem.amount > 1) {
+							return { ...listItem, amount: listItem.amount - 1 }
+						}
+						return { ...listItem }
+					}
+				}
+				return listItem
+			})
+			// .filter(listItem => listItem.amount !== 0)
+		return {
+			...state,
+			itemList: tempList,
 		}
 	}
 	return state

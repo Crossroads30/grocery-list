@@ -12,10 +12,10 @@ const GroceryForm = ({
 	// setName,
 	// editId,
 	// setEditId,
-	isEditPrice,
-	setIsEditPrice,
-	price,
-	setPrice,
+	// isEditPrice,
+	// setIsEditPrice,
+	// price,
+	// setPrice,
 	// alert,
 }) => {
 	const {
@@ -30,7 +30,6 @@ const GroceryForm = ({
 		getPrice,
 		itemPrice,
 		isPriceEditing,
-		showItemAlert,
 		showDangerAlert,
 	} = useGlobalContext()
 	// const [name, setName] = useState('')
@@ -43,7 +42,7 @@ const GroceryForm = ({
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		if (!itemName && !price) {
+		if (!itemName && !itemPrice) {
 			// show alert
 			showDangerAlert(true, 'пожалуйста добавьте продукт', 'danger')
 			timeout()
