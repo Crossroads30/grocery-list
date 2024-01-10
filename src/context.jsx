@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useReducer } from 'react'
+import React, { useContext, useEffect, useReducer, useRef } from 'react'
 import {
 	TOGGLE_AMOUNT,
 	ADD_ITEM,
@@ -45,6 +45,8 @@ const initialState = {
 const AppProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 	// console.log(state)
+
+		const inputRef = useRef(null)
 
 	const editItem = id => {
 		dispatch({ type: EDIT_ITEM, payload: id })
@@ -115,6 +117,7 @@ const AppProvider = ({ children }) => {
 				getPrice,
 				editPrice,
 				showDangerAlert,
+				inputRef,
 			}}
 		>
 			{children}

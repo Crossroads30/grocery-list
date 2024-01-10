@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { useGlobalContext } from './context'
 
 const GroceryForm = ({}) => {
@@ -13,6 +14,7 @@ const GroceryForm = ({}) => {
 		itemPrice,
 		isPriceEditing,
 		showDangerAlert,
+		inputRef,
 	} = useGlobalContext()
 
 	const timeout = () => {
@@ -67,6 +69,7 @@ const GroceryForm = ({}) => {
 						className='grocery'
 						value={itemPrice}
 						onChange={e => getPrice(e.target.value)}
+						ref={inputRef}
 					/>
 				) : (
 					<input
@@ -75,6 +78,7 @@ const GroceryForm = ({}) => {
 						className='grocery'
 						value={itemName}
 						onChange={e => getName(e.target.value)}
+						ref={inputRef}
 					/>
 				)}
 				<button className='submit-btn' type='submit'>

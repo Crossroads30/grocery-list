@@ -3,18 +3,28 @@ import { CiDollar } from 'react-icons/ci'
 import { useGlobalContext } from '../../context'
 
 const Buttons = ({ id }) => {
-	const { removeItem, editItem, editPrice } = useGlobalContext()
+	const { removeItem, editItem, editPrice, inputRef } = useGlobalContext()
 
 	return (
 		<div className='btn-container'>
 			<button
-				onClick={() => editPrice(id)}
+				onClick={() => {
+					inputRef.current.focus()
+					editPrice(id)
+				}}
 				className='amount-btn'
 				type='button'
 			>
 				<CiDollar />
 			</button>
-			<button onClick={() => editItem(id)} className='edit-btn' type='button'>
+			<button
+				onClick={() => {
+					inputRef.current.focus()
+					editItem(id)
+				}}
+				className='edit-btn'
+				type='button'
+			>
 				<FaEdit />
 			</button>
 			<button
