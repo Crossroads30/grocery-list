@@ -42,6 +42,7 @@ const GroceryForm = ({}) => {
 			})
 			editItemList(editedList)
 		}
+
 		if (!itemPrice && isPriceEditing) {
 			// show alert
 			showDangerAlert(true, 'пожалуйста добавьте цену!', 'danger')
@@ -63,7 +64,7 @@ const GroceryForm = ({}) => {
 				return item
 			})
 			editItemList(editedList)
-		} else {
+		} else if (itemName && !isNameEditing) {
 			addItem(itemName)
 		}
 	}
