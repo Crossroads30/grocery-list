@@ -1,5 +1,5 @@
-import Amount from './Amount'
-import Buttons from './Buttons'
+import Amount from './controls/Amount'
+import Buttons from './controls/Buttons'
 
 const ControlsBlock = ({ id, amount }) => {
 	return (

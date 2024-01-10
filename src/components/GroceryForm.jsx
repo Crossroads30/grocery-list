@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useGlobalContext } from './context'
+import { useGlobalContext } from '../context'
 
 const GroceryForm = ({}) => {
 	const {

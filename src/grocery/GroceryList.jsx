@@ -1,10 +1,10 @@
-import Footer from '../Footer'
+import Footer from '../components/Footer'
 import { useGlobalContext } from '../context'
-import GroceryItem from '../grocery-item/GroceryItem'
+import GroceryItem from './GroceryItem'
 
 const GroceryList = () => {
 	const { itemList, total } = useGlobalContext()
-	
+
 	return (
 		<div className='grocery-list'>
 			{itemList.map((item, index) => {

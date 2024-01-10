@@ -12,8 +12,8 @@ import {
 	EDIT_PRICE,
 	SHOW_DANGER_ALERT,
 	GET_TOTAL,
-} from './actions'
-import reducer from './reducer'
+} from './utils/actions'
+import reducer from './utils/reducer'
 
 const AppContext = React.createContext()
 
@@ -46,7 +46,7 @@ const AppProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 	// console.log(state)
 
-		const inputRef = useRef(null)
+	const inputRef = useRef(null)
 
 	const editItem = id => {
 		dispatch({ type: EDIT_ITEM, payload: id })
@@ -99,9 +99,9 @@ const AppProvider = ({ children }) => {
 		localStorage.setItem('itemList', JSON.stringify(state.itemList))
 	}, [state.itemList])
 
-		useEffect(() => {
-			dispatch({ type: GET_TOTAL })
-		}, [state.itemList])
+	useEffect(() => {
+		dispatch({ type: GET_TOTAL })
+	}, [state.itemList])
 
 	return (
 		<AppContext.Provider

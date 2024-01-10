@@ -1,7 +1,7 @@
-import './App.css'
-import Footer from './Footer'
-import GroceryForm from './GroceryForm'
-import Header from './Header'
+import './styles/App.css'
+import Footer from './components/Footer'
+import GroceryForm from './components/GroceryForm'
+import Header from './components/Header'
 import Grocery from './grocery/Grocery'
 
 function App() {

@@ -1,5 +1,5 @@
 import Button from './Button'
-import { useGlobalContext } from './context'
+import { useGlobalContext } from '../context'
 
 const Footer = () => {
 	const { total, removeList, itemList } = useGlobalContext()

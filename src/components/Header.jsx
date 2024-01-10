@@ -1,12 +1,12 @@
-import Alert from "./Alert"
-import { useGlobalContext } from "./context"
-import cartImage from './assets/shoppingcart.png'
+import Alert from './Alert'
+import { useGlobalContext } from '../context'
+import cartImage from '../assets/shoppingcart.png'
 
 const Header = () => {
-  const { alert, itemList, amount } = useGlobalContext()
+	const { alert, itemList, amount } = useGlobalContext()
 
 	return (
-		<div className="header">
+		<div className='header'>
 			{alert.show && <Alert {...alert} />}
 			<div className='imageBlock'>
 				{itemList.length === 0 ? (

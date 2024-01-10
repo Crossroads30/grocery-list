@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import Title from './Title'
-import ControlsBlock from './controls-block/ControlsBlock'
+import ControlsBlock from './ControlsBlock'
 
 function GroceryItem({ id, title, amount, cost }) {
 	const [showMarks, setShowMarks] = useState(false)
@@ -14,10 +14,7 @@ function GroceryItem({ id, title, amount, cost }) {
 				setShowMarks={setShowMarks}
 				cost={cost}
 			/>
-			<ControlsBlock
-				id={id}
-				amount={amount}
-			/>
+			<ControlsBlock id={id} amount={amount} />
 		</article>
 	)
 }
