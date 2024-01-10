@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import { useGlobalContext } from '../context'
 
 const GroceryForm = ({}) => {
@@ -30,6 +29,7 @@ const GroceryForm = ({}) => {
 			showDangerAlert(true, 'пожалуйста добавьте продукт', 'danger')
 			timeout()
 			clearTimeout(timeout())
+			inputRef.current.focus()
 		} else if (itemName && isNameEditing) {
 			// deal with editName
 			const editedList = itemList.map(item => {
@@ -39,14 +39,19 @@ const GroceryForm = ({}) => {
 				return item
 			})
 			editItemList(editedList)
-		} else {
-			addItem(itemName)
 		}
 		if (!itemPrice && isPriceEditing) {
 			// show alert
 			showDangerAlert(true, 'пожалуйста добавьте цену!', 'danger')
 			timeout()
 			clearTimeout(timeout())
+			inputRef.current.focus()
+		}
+		if (isNaN(itemPrice) && isPriceEditing) {
+			showDangerAlert(true, 'введите числовое значение!', 'danger')
+			timeout()
+			clearTimeout(timeout())
+			inputRef.current.focus()
 		} else if (itemPrice && isPriceEditing) {
 			// deal with editPrice
 			const editedList = itemList.map(item => {
@@ -56,6 +61,8 @@ const GroceryForm = ({}) => {
 				return item
 			})
 			editItemList(editedList)
+		} else {
+			addItem(itemName)
 		}
 	}
 
