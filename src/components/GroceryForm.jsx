@@ -63,8 +63,7 @@ const GroceryForm = ({}) => {
 				return item
 			})
 			editItemList(editedList)
-		} 
-		else {
+		} else {
 			addItem(itemName)
 		}
 	}

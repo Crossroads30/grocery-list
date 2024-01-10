@@ -3,7 +3,8 @@ import { CiDollar } from 'react-icons/ci'
 import { useGlobalContext } from '../../context'
 
 const Buttons = ({ id }) => {
-	const { removeItem, editItem, editPrice, inputRef } = useGlobalContext()
+	const { removeItem, editItem, editPrice, inputRef } =
+		useGlobalContext()
 
 	return (
 		<div className='btn-container'>
