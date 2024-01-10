@@ -11,6 +11,8 @@ import {
 	EDIT_PRICE,
 	SHOW_DANGER_ALERT,
 	GET_TOTAL,
+	PRICE_FOCUS_LOST,
+	PRODUCT_FOCUS_LOST,
 } from './actions'
 
 const reducer = (state, action) => {
@@ -113,7 +115,6 @@ const reducer = (state, action) => {
 			itemPrice: action.payload,
 		}
 	}
-
 	if (action.type === EDIT_ITEM_LIST) {
 		if (state.isNameEditing) {
 			return {
@@ -164,7 +165,6 @@ const reducer = (state, action) => {
 			itemList: tempList,
 		}
 	}
-
 	if (action.type === GET_TOTAL) {
 		let { total, amount } = state.itemList.reduce(
 			(listTotal, listItem) => {
@@ -187,6 +187,19 @@ const reducer = (state, action) => {
 			...state,
 			total,
 			amount,
+		}
+	}
+	if (action.type === PRICE_FOCUS_LOST) {
+		return {
+			...state,
+			isPriceEditing: false,
+		}
+	}
+	if (action.type === PRODUCT_FOCUS_LOST) {
+		return {
+			...state,
+			isNameEditing: false,
+			itemName: '',
 		}
 	}
 	return state

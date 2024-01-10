@@ -14,6 +14,8 @@ const GroceryForm = ({}) => {
 		isPriceEditing,
 		showDangerAlert,
 		inputRef,
+		editPriceFocusLost,
+		editProductFocusLost,
 	} = useGlobalContext()
 
 	const timeout = () => {
@@ -61,7 +63,8 @@ const GroceryForm = ({}) => {
 				return item
 			})
 			editItemList(editedList)
-		} else {
+		} 
+		else {
 			addItem(itemName)
 		}
 	}
@@ -77,6 +80,7 @@ const GroceryForm = ({}) => {
 						value={itemPrice}
 						onChange={e => getPrice(e.target.value)}
 						ref={inputRef}
+						onBlur={editPriceFocusLost}
 					/>
 				) : (
 					<input
@@ -86,9 +90,14 @@ const GroceryForm = ({}) => {
 						value={itemName}
 						onChange={e => getName(e.target.value)}
 						ref={inputRef}
+						onBlur={editProductFocusLost}
 					/>
 				)}
-				<button className='submit-btn' type='submit'>
+				<button
+					onMouseDown={e => e.preventDefault()}
+					className='submit-btn'
+					type='submit'
+				>
 					{isNameEditing ? 'исправить' : 'добавить'}
 				</button>
 			</div>

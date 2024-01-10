@@ -12,6 +12,8 @@ import {
 	EDIT_PRICE,
 	SHOW_DANGER_ALERT,
 	GET_TOTAL,
+	PRICE_FOCUS_LOST,
+	PRODUCT_FOCUS_LOST,
 } from './utils/actions'
 import reducer from './utils/reducer'
 
@@ -88,6 +90,13 @@ const AppProvider = ({ children }) => {
 		dispatch({ type: SHOW_DANGER_ALERT, payload: { show, msg, type } })
 	}
 
+	const editPriceFocusLost = () => {
+		dispatch({ type: PRICE_FOCUS_LOST })
+	}
+	const editProductFocusLost = () => {
+		dispatch({ type: PRODUCT_FOCUS_LOST })
+	}
+
 	useEffect(() => {
 		const timeout = setTimeout(() => {
 			dispatch({ type: SHOW_ITEM_ALERT })
@@ -117,6 +126,8 @@ const AppProvider = ({ children }) => {
 				getPrice,
 				editPrice,
 				showDangerAlert,
+				editPriceFocusLost,
+				editProductFocusLost,
 				inputRef,
 			}}
 		>
