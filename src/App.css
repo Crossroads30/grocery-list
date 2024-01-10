@@ -253,7 +253,7 @@ hr {
 
 @media screen and (max-width: 470px) {
 	p {
-		font-size: 0.9rem;
+		font-size: 0.8rem;
 	}
 	.submit-btn {
 		font-size: 0.7rem;
@@ -266,5 +266,8 @@ hr {
 	}
 	.empty-cart {
 		font-size: 1.3rem;
+	}
+	.grocery-item {
+		padding: 0;
 	}
 }
